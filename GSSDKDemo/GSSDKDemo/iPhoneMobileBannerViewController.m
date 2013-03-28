@@ -7,7 +7,9 @@
 //
 
 #import "iPhoneMobileBannerViewController.h"
-#import "GSConstants.h"
+
+#import "GSMobileBannerAdView.h"
+#import "GSSDKInfo.h"
 
 @interface iPhoneMobileBannerViewController ()
 
@@ -68,6 +70,11 @@
 - (BOOL)greystripeBannerAutoload {
     return TRUE;
 }
+
+- (BOOL)greystripeShouldLogAdID {
+    return TRUE;
+}
+
 - (void)textViewDidChangeSelection:(UITextView *)textView {
     [textView resignFirstResponder];
 }

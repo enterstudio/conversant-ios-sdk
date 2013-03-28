@@ -7,7 +7,8 @@
 //
 
 #import "iPhoneInfoViewController.h"
-#import "GSConstants.h"
+
+#import "GSSDKInfo.h"
 
 @interface iPhoneInfoViewController ()
 
@@ -26,13 +27,13 @@
     self.guidLabel.text = GSGUID;
 
     //Labels the Test GUID
-    NSString *testGSGUID = [NSString stringWithFormat:@"31d51c95-d79b-48c1-925e-ad328eb48c87"];
+    NSString *testGSGUID = [NSString stringWithFormat:@"51d7ee3c-95fd-48d5-b648-c915209a00a5"];
     if( [GSGUID isEqualToString:testGSGUID] ) {
         self.guidTitleLabel.text = [NSString stringWithFormat:@"Greystripe Test GUID"];
     }
   
     //Put an initial status into the status box
-    self.hashedIdLabel.text = [GSConstants hashedDeviceId];
+    self.hashedIdLabel.text = [GSSDKInfo hashedDeviceId];
     
     //Populate SDK version and GS Device ID labels
     self.sdkVersionLabel.text = [NSString stringWithFormat:@"iOS %@", kGSSDKVersion];
@@ -43,7 +44,7 @@
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
         [mailer setSubject:[NSString stringWithFormat:@"Greystripe iOS %@ SDK Info", kGSSDKVersion]];
-        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Hashed Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [GSConstants hashedDeviceId], kGSSDKVersion, GSGUID];
+        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Hashed Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [GSSDKInfo hashedDeviceId], kGSSDKVersion, GSGUID];
         [mailer setMessageBody:emailBody isHTML:YES];
         [self presentModalViewController:mailer animated:YES];
     }

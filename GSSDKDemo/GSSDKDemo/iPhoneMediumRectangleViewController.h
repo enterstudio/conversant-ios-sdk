@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GSAdDelegate.h"
-#import "GSMediumRectangleAdView.h"
+
+@class GSMediumRectangleAdView;
 
 @interface iPhoneMediumRectangleViewController : UIViewController <GSAdDelegate>
 

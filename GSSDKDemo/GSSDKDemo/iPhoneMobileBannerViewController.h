@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GSAdDelegate.h"
-#import "GSMobileBannerAdView.h"
+
+@class GSMobileBannerAdView;
 
 @interface iPhoneMobileBannerViewController : UIViewController <GSAdDelegate>
 

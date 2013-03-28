@@ -8,14 +8,24 @@
 
 #import "AppDelegate.h"
 
+#import "GSSDKInfo.h"
+
 @implementation AppDelegate
+
+@synthesize locationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // You can also set the Greystripe GUID from the App Delegate
-    // [GSConstants setGuid:@"31d51c95-d79b-48c1-925e-ad328eb48c87"];
+    // [GSConstants setGuid:@"51d7ee3c-95fd-48d5-b648-c915209a00a5"];
 
     // Override point for customization after application launch.
+    
+    // To add 
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [locationManager startUpdatingLocation];
     
     return YES;
 }
@@ -49,9 +59,23 @@
 
 // Greystripe strongly recommends setting interface orientation on a per view controller basis
 // Greystripe's SDK supports rotation and any orientation on iOS devices
+
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     return UIInterfaceOrientationMaskAll;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    [GSSDKInfo updateLocation:newLocation];
+    
+    NSLog(@"%@", newLocation);
+    //NSLog(@"Lat: %f", newLocation.coordinate.latitude);
+    //NSLog(@"Long: %f", newLocation.coordinate.longitude);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+
 }
 
 @end

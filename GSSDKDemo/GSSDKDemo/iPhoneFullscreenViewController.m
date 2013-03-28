@@ -7,7 +7,9 @@
 //
 
 #import "iPhoneFullscreenViewController.h"
-#import "GSConstants.h"
+
+#import "GSFullscreenAd.h"
+#import "GSSDKInfo.h"
 
 @interface iPhoneFullscreenViewController ()
 
@@ -56,6 +58,10 @@
     // The Greystripe GUID is defined in Constants.h and preloaded in GSSDKDemo-Prefix.pch in this example
     // Alternate example: You can also set the Greystripe GUID in the AppDelegate.m as well
     return GSGUID;
+}
+
+- (BOOL)greystripeShouldLogAdID {
+    return TRUE;
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView {

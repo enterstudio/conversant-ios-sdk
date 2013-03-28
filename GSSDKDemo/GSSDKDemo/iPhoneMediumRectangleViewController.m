@@ -7,7 +7,9 @@
 //
 
 #import "iPhoneMediumRectangleViewController.h"
-#import "GSConstants.h"
+
+#import "GSMediumRectangleAdView.h"
+#import "GSSDKInfo.h"
 
 @interface iPhoneMediumRectangleViewController ()
 
@@ -60,6 +62,11 @@
 - (BOOL)greystripeBannerAutoload {
     return TRUE;
 }
+
+- (BOOL)greystripeShouldLogAdID {
+    return TRUE;
+}
+
 - (void)textViewDidChangeSelection:(UITextView *)textView {
     [textView resignFirstResponder];
 }

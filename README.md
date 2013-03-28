@@ -3,7 +3,7 @@ Greystripe SDK for iOS
 
 The Greystripe SDK for iOS provides a simple way to monetize your game or application via fullscreen interstitial and banner ads in your iOS app.
 
-To learn more about the SDK, documentation and how to integrate it into your app, please visit Support site [http://support.greystripe.com](http://support.greystripe.com)
+To learn more about the SDK, documentation and how to integrate it into your app, please visit our Support site [http://support.greystripe.com](http://support.greystripe.com)
 
 TRY IT OUT
 

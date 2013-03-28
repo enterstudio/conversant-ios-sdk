@@ -1,6 +1,6 @@
 //
-//  GSConstants.h
-//  GreystripeSDK
+//  GSSDKInfo.h
+//  SDK
 //
 //  Created by Justine DiPrete on 1/13/12.
 //  Copyright 2013 Greystripe
@@ -19,16 +19,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-/**
- * The current version of the SDK.
- */
 extern NSString * const kGSSDKVersion;
 
-/**
- * Constants for the SDK.
- */
-@interface GSConstants : NSObject
+@interface GSSDKInfo : NSObject
 
 /**
  * The hashed identifier of the device that is currently running the SDK.
@@ -38,9 +33,16 @@ extern NSString * const kGSSDKVersion;
 /**
  * This is a convenience method to set the global unique identifier for the application.
  * This method should be called before any view controller containing a GSBannerAd is
- * initialized if the delegate does not implement the greystripeGUID method. This can 
- * only be set once. All subsequent attempts to set the GUID will be ignored. 
+ * initialized if the delegate does not implement the greystripeGUID method. This can
+ * only be set once. All subsequent attempts to set the GUID will be ignored.
  */
 + (void)setGUID:(NSString *)a_GUID;
+
+/**
+ * If the application is monitoring location updates, this method should be called
+ * whenever the location manager gets an update. 
+ */
++ (void)updateLocation:(CLLocation *)a_location;
+
 
 @end

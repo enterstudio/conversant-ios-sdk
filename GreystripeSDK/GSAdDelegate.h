@@ -139,4 +139,10 @@
  */
 - (void)greystripeBannerAdDidCollapse;
 
+/**
+ * Return YES in this method in order to log out the ID for each ad. This
+ * defaults to NO.
+ */
+- (BOOL)greystripeShouldLogAdID;
+
 @end

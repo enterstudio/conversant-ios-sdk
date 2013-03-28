@@ -13,7 +13,6 @@
 #import "GSMediumRectangleAdView.h"
 #import "GSFullscreenAd.h"
 
-
 #define SCREEN_SIZE_IPHONE_CLASSIC 3.5
 #define SCREEN_SIZE_IPHONE_TALL 4.0
 #define SCREEN_SIZE_IPAD_CLASSIC 9.7

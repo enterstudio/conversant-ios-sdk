@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GSAdDelegate.h"
-#import "GSFullscreenAd.h"
+
+@class GSFullscreenAd;
 
 @interface iPhoneFullscreenViewController : UIViewController <GSAdDelegate>
 
