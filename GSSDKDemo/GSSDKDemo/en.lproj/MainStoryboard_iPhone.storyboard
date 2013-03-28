@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+    </dependencies>
+    <scenes>
+        <!--I Phone Mobile Banner View Controller - Banner Ad-->
+        <scene sceneID="11">
+            <objects>
+                <viewController title="Banner Ad" id="2" customClass="iPhoneMobileBannerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="16">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i6d-QJ-2sK">
+                                <rect key="frame" x="20" y="228" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Banner Ad">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bannerButtonPressed:" destination="2" eventType="touchUpInside" id="HWr-iu-oWd"/>
+                                </connections>
+                            </button>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" id="L2f-7T-dBU" customClass="GSMobileBannerAdView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="UYw-1D-OPd"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Press the fetch button to get started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aVQ-md-iiq">
+                                <rect key="frame" x="0.0" y="437" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Greystripe Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AzZ-pG-tOX">
+                                <rect key="frame" x="20" y="408" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49803921569999998" green="0.4941176471" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Banner Ad" image="banner.png" id="7"/>
+                    <connections>
+                        <outlet property="bannerButton" destination="i6d-QJ-2sK" id="fFI-fq-nbw"/>
+                        <outlet property="myBannerAd" destination="L2f-7T-dBU" id="vob-Zf-ql8"/>
+                        <outlet property="statusLabel" destination="aVQ-md-iiq" id="Mvj-Qi-4gz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="-518"/>
+        </scene>
+        <!--I Phone Info View Controller - SDK Info-->
+        <scene sceneID="azo-Vz-e5g">
+            <objects>
+                <viewController id="AAv-zJ-Q1w" customClass="iPhoneInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HZq-3e-4GD">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hashed Device Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ART-Ab-n9X">
+                                <rect key="frame" x="20" y="109" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hashed Device Id Placeholder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="kPh-Av-qiM">
+                                <rect key="frame" x="20" y="137" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SDK Version Placeholder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KIg-oI-SjJ">
+                                <rect key="frame" x="20" y="195" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GUID Placeholder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HwS-Yl-Hkv">
+                                <rect key="frame" x="20" y="253" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="240" image="greystripe-logo-white.png" id="DLR-QS-TpY">
+                                <rect key="frame" x="20" y="19" width="280" height="37"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Greystripe GUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zc-bc-XAw">
+                                <rect key="frame" x="20" y="224" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Greystripe SDK Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3bj-pc-kfx">
+                                <rect key="frame" x="20" y="166" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Documentation Resources" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0N-BE-c2J">
+                                <rect key="frame" x="20" y="283" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="http://wiki.greystripe.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iui-jJ-aHM">
+                                <rect key="frame" x="20" y="311" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Questions? Contact GS Support" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VTJ-pU-QZb">
+                                <rect key="frame" x="20" y="340" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="support@greystripe.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I6w-v1-jit">
+                                <rect key="frame" x="20" y="370" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="09x-gH-O4T">
+                                <rect key="frame" x="20" y="418" width="280" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Email SDK Info">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openMail:" destination="AAv-zJ-Q1w" eventType="touchUpInside" id="I9G-aV-fXM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49803921568627452" green="0.49411764705882355" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="SDK Info" image="info.png" id="uoE-1m-8sU"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="guidLabel" destination="HwS-Yl-Hkv" id="KfO-m8-fpQ"/>
+                        <outlet property="guidTitleLabel" destination="0zc-bc-XAw" id="Ok1-1x-ll6"/>
+                        <outlet property="hashedIdLabel" destination="kPh-Av-qiM" id="cHb-nO-CHV"/>
+                        <outlet property="sdkVersionLabel" destination="KIg-oI-SjJ" id="bMl-TY-JBP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PqE-cG-01B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="1088"/>
+        </scene>
+        <!--I Phone Fullscreen View Controller - Fullscreen Ad-->
+        <scene sceneID="3NH-E7-nr9">
+            <objects>
+                <viewController id="uLD-zh-RFK" customClass="iPhoneFullscreenViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zdM-V0-1KD">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0C2-bp-Rku">
+                                <rect key="frame" x="20" y="228" width="280" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Display Fullscreen Ad">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayFullscreenButtonPressed:" destination="uLD-zh-RFK" eventType="touchUpInside" id="GDx-Jo-pZ5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Press the fetch button to get started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2wz-pN-ohW">
+                                <rect key="frame" x="0.0" y="432" width="320" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Greystripe Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n2n-xZ-G4T">
+                                <rect key="frame" x="20" y="403" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sa0-05-7s2">
+                                <rect key="frame" x="20" y="114" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Fullscreen Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fetchFullscreenButtonPressed:" destination="uLD-zh-RFK" eventType="touchUpInside" id="Rrf-Y3-Xh2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49803921569999998" green="0.4941176471" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Fullscreen Ad" image="fullscreen.png" id="Nhy-f5-DcV"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="displayFullscreenButton" destination="0C2-bp-Rku" id="wbl-Zm-DZi"/>
+                        <outlet property="fetchFullscreenButton" destination="sa0-05-7s2" id="l0B-cf-IBH"/>
+                        <outlet property="statusLabel" destination="2wz-pN-ohW" id="evb-9E-rb3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5k8-zg-TlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="825"/>
+        </scene>
+        <!--I Phone Medium Rectangle View Controller - MedRec Ad-->
+        <scene sceneID="13">
+            <objects>
+                <viewController title="MedRec Ad" id="3" customClass="iPhoneMediumRectangleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="17">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ggQ-T0-cFg">
+                                <rect key="frame" x="20" y="273" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Medium Rectangle">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mediumRectangleButtonPressed:" destination="3" eventType="touchUpInside" id="Vp4-gb-eWn"/>
+                                </connections>
+                            </button>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="mW6-eT-p0h" customClass="GSMediumRectangleAdView">
+                                <rect key="frame" x="10" y="15" width="300" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3" id="xhl-RD-HNK"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Press the fetch button to get started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Acw-eF-E2q">
+                                <rect key="frame" x="0.0" y="437" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Greystripe Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q2Y-cP-2eh">
+                                <rect key="frame" x="20" y="408" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.49803921569999998" green="0.4941176471" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="MedRec Ad" image="medrec.png" id="6"/>
+                    <connections>
+                        <outlet property="mediumRectangleButton" destination="ggQ-T0-cFg" id="AYj-d9-ehC"/>
+                        <outlet property="myMediumRectangleAd" destination="mW6-eT-p0h" id="OdK-3Y-e4r"/>
+                        <outlet property="statusLabel" destination="Acw-eF-E2q" id="ygk-Ho-kgY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="146"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="15">
+            <objects>
+                <tabBarController id="4" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="5">
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
+                        <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
+                        <segue destination="uLD-zh-RFK" kind="relationship" relationship="viewControllers" id="f2h-fK-Op9"/>
+                        <segue destination="AAv-zJ-Q1w" kind="relationship" relationship="viewControllers" id="KQg-ZG-dt9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="180"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="banner.png" width="30" height="30"/>
+        <image name="fullscreen.png" width="30" height="30"/>
+        <image name="greystripe-logo-white.png" width="300" height="37"/>
+        <image name="info.png" width="30" height="30"/>
+        <image name="medrec.png" width="30" height="30"/>
+    </resources>
+    <classes>
+        <class className="GSAdView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSAdView.h"/>
+        </class>
+        <class className="GSBannerAdView" superclassName="GSAdView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSBannerAdView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="GSMediumRectangleAdView" superclassName="GSBannerAdView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSMediumRectangleAdView.h"/>
+        </class>
+        <class className="GSMobileBannerAdView" superclassName="GSBannerAdView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSMobileBannerAdView.h"/>
+        </class>
+        <class className="iPhoneFullscreenViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPhoneFullscreenViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displayFullscreenButtonPressed:"/>
+                <relationship kind="action" name="fetchFullscreenButtonPressed:"/>
+                <relationship kind="outlet" name="displayFullscreenButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fetchFullscreenButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="iPhoneInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPhoneInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openMail:"/>
+                <relationship kind="outlet" name="guidLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="guidTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hashedIdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sdkVersionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="iPhoneMediumRectangleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPhoneMediumRectangleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mediumRectangleButtonPressed:"/>
+                <relationship kind="outlet" name="mediumRectangleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myMediumRectangleAd" candidateClass="GSMediumRectangleAdView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="iPhoneMobileBannerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPhoneMobileBannerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bannerButtonPressed:"/>
+                <relationship kind="outlet" name="bannerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myBannerAd" candidateClass="GSMobileBannerAdView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

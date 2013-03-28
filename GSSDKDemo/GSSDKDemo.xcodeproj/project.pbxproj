@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F751D0B170252A200329E65 /* libGreystripeSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F751D0A170252A200329E65 /* libGreystripeSDK.a */; };
+		7FC145B01619FFC70029EE6D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC145AF1619FFC70029EE6D /* MessageUI.framework */; };
+		7FDAA7031657099600345957 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA7021657099600345957 /* EventKit.framework */; };
+		7FDAA7061657099E00345957 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA7051657099E00345957 /* AddressBook.framework */; };
+		7FDAA708165709A400345957 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA707165709A400345957 /* MobileCoreServices.framework */; };
+		7FDAA70A165709AA00345957 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA709165709AA00345957 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BD01F91C16066B77001092FF /* iPhoneMediumRectangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F91B16066B77001092FF /* iPhoneMediumRectangleViewController.m */; };
+		BD01F91F160684CA001092FF /* iPhoneFullscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F91E160684CA001092FF /* iPhoneFullscreenViewController.m */; };
+		BD01F92516068D6D001092FF /* iPhoneInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F92416068D6D001092FF /* iPhoneInfoViewController.m */; };
+		BD239C4616069C4B001ABA20 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4416069C4B001ABA20 /* banner.png */; };
+		BD239C4716069C4B001ABA20 /* banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4516069C4B001ABA20 /* banner@2x.png */; };
+		BD239C4C16069D33001ABA20 /* fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4816069D33001ABA20 /* fullscreen.png */; };
+		BD239C4D16069D33001ABA20 /* fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4916069D33001ABA20 /* fullscreen@2x.png */; };
+		BD239C4E16069D33001ABA20 /* medrec.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4A16069D33001ABA20 /* medrec.png */; };
+		BD239C4F16069D33001ABA20 /* medrec@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C4B16069D33001ABA20 /* medrec@2x.png */; };
+		BD239C5E1606A009001ABA20 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C561606A009001ABA20 /* info.png */; };
+		BD239C5F1606A009001ABA20 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD239C571606A009001ABA20 /* info@2x.png */; };
+		BD29EFC91606ACC1006F4D78 /* iPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD29EFC81606ACC1006F4D78 /* iPadViewController.m */; };
+		BD29EFD21606B563006F4D78 /* GS-SDK-Icon-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFCE1606B563006F4D78 /* GS-SDK-Icon-57px.png */; };
+		BD29EFD31606B563006F4D78 /* GS-SDK-Icon-72px.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFCF1606B563006F4D78 /* GS-SDK-Icon-72px.png */; };
+		BD29EFD41606B563006F4D78 /* GS-SDK-Icon-114px.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFD01606B563006F4D78 /* GS-SDK-Icon-114px.png */; };
+		BD29EFD51606B563006F4D78 /* GS-SDK-Icon-144px.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFD11606B563006F4D78 /* GS-SDK-Icon-144px.png */; };
+		BD29EFE61606B62E006F4D78 /* greystripe-logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFE21606B62E006F4D78 /* greystripe-logo-white.png */; };
+		BD29EFE71606B62E006F4D78 /* greystripe-logo-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFE31606B62E006F4D78 /* greystripe-logo-white@2x.png */; };
+		BD29EFEA1606B6DD006F4D78 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFE81606B6DD006F4D78 /* Default-Landscape.png */; };
+		BD29EFEB1606B6DD006F4D78 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFE91606B6DD006F4D78 /* Default-Landscape@2x.png */; };
+		BD29EFF61606B916006F4D78 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFF41606B916006F4D78 /* Default-Portrait.png */; };
+		BD29EFF71606B916006F4D78 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD29EFF51606B916006F4D78 /* Default-Portrait@2x.png */; };
+		BDF37242160650AA00F7B72A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37241160650AA00F7B72A /* UIKit.framework */; };
+		BDF37244160650AA00F7B72A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37243160650AA00F7B72A /* Foundation.framework */; };
+		BDF37246160650AA00F7B72A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37245160650AA00F7B72A /* CoreGraphics.framework */; };
+		BDF3724C160650AA00F7B72A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDF3724A160650AA00F7B72A /* InfoPlist.strings */; };
+		BDF3724E160650AA00F7B72A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF3724D160650AA00F7B72A /* main.m */; };
+		BDF37252160650AA00F7B72A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF37251160650AA00F7B72A /* AppDelegate.m */; };
+		BDF37254160650AA00F7B72A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF37253160650AA00F7B72A /* Default.png */; };
+		BDF37256160650AA00F7B72A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF37255160650AA00F7B72A /* Default@2x.png */; };
+		BDF37258160650AA00F7B72A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF37257160650AA00F7B72A /* Default-568h@2x.png */; };
+		BDF3725B160650AA00F7B72A /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF37259160650AA00F7B72A /* MainStoryboard_iPhone.storyboard */; };
+		BDF3725E160650AA00F7B72A /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF3725C160650AA00F7B72A /* MainStoryboard_iPad.storyboard */; };
+		BDF372741606518500F7B72A /* iPhoneMobileBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF372731606518500F7B72A /* iPhoneMobileBannerViewController.m */; };
+		BDF37281160652AF00F7B72A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37280160652AF00F7B72A /* SystemConfiguration.framework */; };
+		BDF37283160652C400F7B72A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37282160652C400F7B72A /* libz.dylib */; };
+		BDF37285160652D100F7B72A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF37284160652D100F7B72A /* libsqlite3.dylib */; };
+		BDF372871606531500F7B72A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF372861606531500F7B72A /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7F751D02170252A200329E65 /* GSAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAd.h; path = ../../GreystripeSDK/GSAd.h; sourceTree = "<group>"; };
+		7F751D03170252A200329E65 /* GSAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAdDelegate.h; path = ../../GreystripeSDK/GSAdDelegate.h; sourceTree = "<group>"; };
+		7F751D04170252A200329E65 /* GSBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSBannerAdView.h; path = ../../GreystripeSDK/GSBannerAdView.h; sourceTree = "<group>"; };
+		7F751D05170252A200329E65 /* GSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSConstants.h; path = ../../GreystripeSDK/GSConstants.h; sourceTree = "<group>"; };
+		7F751D06170252A200329E65 /* GSFullscreenAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSFullscreenAd.h; path = ../../GreystripeSDK/GSFullscreenAd.h; sourceTree = "<group>"; };
+		7F751D07170252A200329E65 /* GSLeaderboardAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSLeaderboardAdView.h; path = ../../GreystripeSDK/GSLeaderboardAdView.h; sourceTree = "<group>"; };
+		7F751D08170252A200329E65 /* GSMediumRectangleAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMediumRectangleAdView.h; path = ../../GreystripeSDK/GSMediumRectangleAdView.h; sourceTree = "<group>"; };
+		7F751D09170252A200329E65 /* GSMobileBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMobileBannerAdView.h; path = ../../GreystripeSDK/GSMobileBannerAdView.h; sourceTree = "<group>"; };
+		7F751D0A170252A200329E65 /* libGreystripeSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGreystripeSDK.a; path = ../../GreystripeSDK/libGreystripeSDK.a; sourceTree = "<group>"; };
+		7FC145AF1619FFC70029EE6D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7FDAA7021657099600345957 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		7FDAA7051657099E00345957 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		7FDAA707165709A400345957 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7FDAA709165709AA00345957 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		BD01F91A16066B77001092FF /* iPhoneMediumRectangleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneMediumRectangleViewController.h; sourceTree = "<group>"; };
+		BD01F91B16066B77001092FF /* iPhoneMediumRectangleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneMediumRectangleViewController.m; sourceTree = "<group>"; };
+		BD01F91D160684CA001092FF /* iPhoneFullscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneFullscreenViewController.h; sourceTree = "<group>"; };
+		BD01F91E160684CA001092FF /* iPhoneFullscreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneFullscreenViewController.m; sourceTree = "<group>"; };
+		BD01F92316068D6D001092FF /* iPhoneInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneInfoViewController.h; sourceTree = "<group>"; };
+		BD01F92416068D6D001092FF /* iPhoneInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneInfoViewController.m; sourceTree = "<group>"; };
+		BD239C4416069C4B001ABA20 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		BD239C4516069C4B001ABA20 /* banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner@2x.png"; sourceTree = "<group>"; };
+		BD239C4816069D33001ABA20 /* fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen.png; sourceTree = "<group>"; };
+		BD239C4916069D33001ABA20 /* fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen@2x.png"; sourceTree = "<group>"; };
+		BD239C4A16069D33001ABA20 /* medrec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medrec.png; sourceTree = "<group>"; };
+		BD239C4B16069D33001ABA20 /* medrec@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "medrec@2x.png"; sourceTree = "<group>"; };
+		BD239C561606A009001ABA20 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		BD239C571606A009001ABA20 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
+		BD29EFC71606ACC1006F4D78 /* iPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadViewController.h; sourceTree = "<group>"; };
+		BD29EFC81606ACC1006F4D78 /* iPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadViewController.m; sourceTree = "<group>"; };
+		BD29EFCE1606B563006F4D78 /* GS-SDK-Icon-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GS-SDK-Icon-57px.png"; sourceTree = "<group>"; };
+		BD29EFCF1606B563006F4D78 /* GS-SDK-Icon-72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GS-SDK-Icon-72px.png"; sourceTree = "<group>"; };
+		BD29EFD01606B563006F4D78 /* GS-SDK-Icon-114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GS-SDK-Icon-114px.png"; sourceTree = "<group>"; };
+		BD29EFD11606B563006F4D78 /* GS-SDK-Icon-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GS-SDK-Icon-144px.png"; sourceTree = "<group>"; };
+		BD29EFE21606B62E006F4D78 /* greystripe-logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystripe-logo-white.png"; sourceTree = "<group>"; };
+		BD29EFE31606B62E006F4D78 /* greystripe-logo-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystripe-logo-white@2x.png"; sourceTree = "<group>"; };
+		BD29EFE81606B6DD006F4D78 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		BD29EFE91606B6DD006F4D78 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		BD29EFF41606B916006F4D78 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		BD29EFF51606B916006F4D78 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
+		BDF3723D160650AA00F7B72A /* GSSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF37241160650AA00F7B72A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BDF37243160650AA00F7B72A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BDF37245160650AA00F7B72A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BDF37249160650AA00F7B72A /* GSSDKDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GSSDKDemo-Info.plist"; sourceTree = "<group>"; };
+		BDF3724B160650AA00F7B72A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDF3724D160650AA00F7B72A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDF3724F160650AA00F7B72A /* GSSDKDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GSSDKDemo-Prefix.pch"; sourceTree = "<group>"; };
+		BDF37250160650AA00F7B72A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BDF37251160650AA00F7B72A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BDF37253160650AA00F7B72A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BDF37255160650AA00F7B72A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BDF37257160650AA00F7B72A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BDF3725A160650AA00F7B72A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		BDF3725D160650AA00F7B72A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		BDF372721606518500F7B72A /* iPhoneMobileBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneMobileBannerViewController.h; sourceTree = "<group>"; };
+		BDF372731606518500F7B72A /* iPhoneMobileBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneMobileBannerViewController.m; sourceTree = "<group>"; };
+		BDF37280160652AF00F7B72A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BDF37282160652C400F7B72A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BDF37284160652D100F7B72A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BDF372861606531500F7B72A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BDF3728E160658AE00F7B72A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDF3723A160650AA00F7B72A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FDAA70A165709AA00345957 /* AdSupport.framework in Frameworks */,
+				7FDAA708165709A400345957 /* MobileCoreServices.framework in Frameworks */,
+				7FDAA7061657099E00345957 /* AddressBook.framework in Frameworks */,
+				7FDAA7031657099600345957 /* EventKit.framework in Frameworks */,
+				7FC145B01619FFC70029EE6D /* MessageUI.framework in Frameworks */,
+				BDF372871606531500F7B72A /* QuartzCore.framework in Frameworks */,
+				BDF37285160652D100F7B72A /* libsqlite3.dylib in Frameworks */,
+				BDF37283160652C400F7B72A /* libz.dylib in Frameworks */,
+				BDF37281160652AF00F7B72A /* SystemConfiguration.framework in Frameworks */,
+				BDF37242160650AA00F7B72A /* UIKit.framework in Frameworks */,
+				BDF37244160650AA00F7B72A /* Foundation.framework in Frameworks */,
+				BDF37246160650AA00F7B72A /* CoreGraphics.framework in Frameworks */,
+				7F751D0B170252A200329E65 /* libGreystripeSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7FB0D01A16596335002C47B5 /* GreystripeSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7F751D02170252A200329E65 /* GSAd.h */,
+				7F751D03170252A200329E65 /* GSAdDelegate.h */,
+				7F751D04170252A200329E65 /* GSBannerAdView.h */,
+				7F751D05170252A200329E65 /* GSConstants.h */,
+				7F751D06170252A200329E65 /* GSFullscreenAd.h */,
+				7F751D07170252A200329E65 /* GSLeaderboardAdView.h */,
+				7F751D08170252A200329E65 /* GSMediumRectangleAdView.h */,
+				7F751D09170252A200329E65 /* GSMobileBannerAdView.h */,
+				7F751D0A170252A200329E65 /* libGreystripeSDK.a */,
+			);
+			name = GreystripeSDK;
+			sourceTree = "<group>";
+		};
+		BDF37232160650AA00F7B72A = {
+			isa = PBXGroup;
+			children = (
+				7FB0D01A16596335002C47B5 /* GreystripeSDK */,
+				BDF37247160650AA00F7B72A /* GSSDKDemo */,
+				BDF37240160650AA00F7B72A /* Frameworks */,
+				BDF3723E160650AA00F7B72A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDF3723E160650AA00F7B72A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDF3723D160650AA00F7B72A /* GSSDKDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDF37240160650AA00F7B72A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FDAA7051657099E00345957 /* AddressBook.framework */,
+				7FDAA709165709AA00345957 /* AdSupport.framework */,
+				BDF37245160650AA00F7B72A /* CoreGraphics.framework */,
+				7FDAA7021657099600345957 /* EventKit.framework */,
+				BDF37243160650AA00F7B72A /* Foundation.framework */,
+				BDF37284160652D100F7B72A /* libsqlite3.dylib */,
+				BDF37282160652C400F7B72A /* libz.dylib */,
+				7FC145AF1619FFC70029EE6D /* MessageUI.framework */,
+				7FDAA707165709A400345957 /* MobileCoreServices.framework */,
+				BDF372861606531500F7B72A /* QuartzCore.framework */,
+				BDF37280160652AF00F7B72A /* SystemConfiguration.framework */,
+				BDF37241160650AA00F7B72A /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDF37247160650AA00F7B72A /* GSSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BDF37250160650AA00F7B72A /* AppDelegate.h */,
+				BDF37251160650AA00F7B72A /* AppDelegate.m */,
+				BDF3728E160658AE00F7B72A /* Constants.h */,
+				BD29EFC71606ACC1006F4D78 /* iPadViewController.h */,
+				BD29EFC81606ACC1006F4D78 /* iPadViewController.m */,
+				BD01F91D160684CA001092FF /* iPhoneFullscreenViewController.h */,
+				BD01F91E160684CA001092FF /* iPhoneFullscreenViewController.m */,
+				BD01F92316068D6D001092FF /* iPhoneInfoViewController.h */,
+				BD01F92416068D6D001092FF /* iPhoneInfoViewController.m */,
+				BD01F91A16066B77001092FF /* iPhoneMediumRectangleViewController.h */,
+				BD01F91B16066B77001092FF /* iPhoneMediumRectangleViewController.m */,
+				BDF372721606518500F7B72A /* iPhoneMobileBannerViewController.h */,
+				BDF372731606518500F7B72A /* iPhoneMobileBannerViewController.m */,
+				BDF3725C160650AA00F7B72A /* MainStoryboard_iPad.storyboard */,
+				BDF37259160650AA00F7B72A /* MainStoryboard_iPhone.storyboard */,
+				BDF37248160650AA00F7B72A /* Supporting Files */,
+			);
+			path = GSSDKDemo;
+			sourceTree = "<group>";
+		};
+		BDF37248160650AA00F7B72A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD239C4416069C4B001ABA20 /* banner.png */,
+				BD239C4516069C4B001ABA20 /* banner@2x.png */,
+				BDF37257160650AA00F7B72A /* Default-568h@2x.png */,
+				BD29EFE81606B6DD006F4D78 /* Default-Landscape.png */,
+				BD29EFE91606B6DD006F4D78 /* Default-Landscape@2x.png */,
+				BD29EFF41606B916006F4D78 /* Default-Portrait.png */,
+				BD29EFF51606B916006F4D78 /* Default-Portrait@2x.png */,
+				BDF37253160650AA00F7B72A /* Default.png */,
+				BDF37255160650AA00F7B72A /* Default@2x.png */,
+				BD239C4816069D33001ABA20 /* fullscreen.png */,
+				BD239C4916069D33001ABA20 /* fullscreen@2x.png */,
+				BD29EFE21606B62E006F4D78 /* greystripe-logo-white.png */,
+				BD29EFE31606B62E006F4D78 /* greystripe-logo-white@2x.png */,
+				BD29EFD01606B563006F4D78 /* GS-SDK-Icon-114px.png */,
+				BD29EFD11606B563006F4D78 /* GS-SDK-Icon-144px.png */,
+				BD29EFCE1606B563006F4D78 /* GS-SDK-Icon-57px.png */,
+				BD29EFCF1606B563006F4D78 /* GS-SDK-Icon-72px.png */,
+				BDF37249160650AA00F7B72A /* GSSDKDemo-Info.plist */,
+				BDF3724F160650AA00F7B72A /* GSSDKDemo-Prefix.pch */,
+				BD239C561606A009001ABA20 /* info.png */,
+				BD239C571606A009001ABA20 /* info@2x.png */,
+				BDF3724A160650AA00F7B72A /* InfoPlist.strings */,
+				BDF3724D160650AA00F7B72A /* main.m */,
+				BD239C4A16069D33001ABA20 /* medrec.png */,
+				BD239C4B16069D33001ABA20 /* medrec@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDF3723C160650AA00F7B72A /* GSSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDF3726F160650AA00F7B72A /* Build configuration list for PBXNativeTarget "GSSDKDemo" */;
+			buildPhases = (
+				BDF37239160650AA00F7B72A /* Sources */,
+				BDF3723A160650AA00F7B72A /* Frameworks */,
+				BDF3723B160650AA00F7B72A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GSSDKDemo;
+			productName = GSSDKDemo;
+			productReference = BDF3723D160650AA00F7B72A /* GSSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDF37234160650AA00F7B72A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Greystripe;
+			};
+			buildConfigurationList = BDF37237160650AA00F7B72A /* Build configuration list for PBXProject "GSSDKDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BDF37232160650AA00F7B72A;
+			productRefGroup = BDF3723E160650AA00F7B72A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDF3723C160650AA00F7B72A /* GSSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDF3723B160650AA00F7B72A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF3724C160650AA00F7B72A /* InfoPlist.strings in Resources */,
+				BDF37254160650AA00F7B72A /* Default.png in Resources */,
+				BDF37256160650AA00F7B72A /* Default@2x.png in Resources */,
+				BDF37258160650AA00F7B72A /* Default-568h@2x.png in Resources */,
+				BDF3725B160650AA00F7B72A /* MainStoryboard_iPhone.storyboard in Resources */,
+				BDF3725E160650AA00F7B72A /* MainStoryboard_iPad.storyboard in Resources */,
+				BD239C4616069C4B001ABA20 /* banner.png in Resources */,
+				BD239C4716069C4B001ABA20 /* banner@2x.png in Resources */,
+				BD239C4C16069D33001ABA20 /* fullscreen.png in Resources */,
+				BD239C4D16069D33001ABA20 /* fullscreen@2x.png in Resources */,
+				BD239C4E16069D33001ABA20 /* medrec.png in Resources */,
+				BD239C4F16069D33001ABA20 /* medrec@2x.png in Resources */,
+				BD239C5E1606A009001ABA20 /* info.png in Resources */,
+				BD239C5F1606A009001ABA20 /* info@2x.png in Resources */,
+				BD29EFD21606B563006F4D78 /* GS-SDK-Icon-57px.png in Resources */,
+				BD29EFD31606B563006F4D78 /* GS-SDK-Icon-72px.png in Resources */,
+				BD29EFD41606B563006F4D78 /* GS-SDK-Icon-114px.png in Resources */,
+				BD29EFD51606B563006F4D78 /* GS-SDK-Icon-144px.png in Resources */,
+				BD29EFE61606B62E006F4D78 /* greystripe-logo-white.png in Resources */,
+				BD29EFE71606B62E006F4D78 /* greystripe-logo-white@2x.png in Resources */,
+				BD29EFEA1606B6DD006F4D78 /* Default-Landscape.png in Resources */,
+				BD29EFEB1606B6DD006F4D78 /* Default-Landscape@2x.png in Resources */,
+				BD29EFF61606B916006F4D78 /* Default-Portrait.png in Resources */,
+				BD29EFF71606B916006F4D78 /* Default-Portrait@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDF37239160650AA00F7B72A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF3724E160650AA00F7B72A /* main.m in Sources */,
+				BDF37252160650AA00F7B72A /* AppDelegate.m in Sources */,
+				BDF372741606518500F7B72A /* iPhoneMobileBannerViewController.m in Sources */,
+				BD01F91C16066B77001092FF /* iPhoneMediumRectangleViewController.m in Sources */,
+				BD01F91F160684CA001092FF /* iPhoneFullscreenViewController.m in Sources */,
+				BD01F92516068D6D001092FF /* iPhoneInfoViewController.m in Sources */,
+				BD29EFC91606ACC1006F4D78 /* iPadViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BDF3724A160650AA00F7B72A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF3724B160650AA00F7B72A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BDF37259160650AA00F7B72A /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF3725A160650AA00F7B72A /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		BDF3725C160650AA00F7B72A /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF3725D160650AA00F7B72A /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BDF3726D160650AA00F7B72A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BDF3726E160650AA00F7B72A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BDF37270160650AA00F7B72A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GSSDKDemo/GSSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "GSSDKDemo/GSSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = ../../GreystripeSDK;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BDF37271160650AA00F7B72A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GSSDKDemo/GSSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "GSSDKDemo/GSSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = ../../GreystripeSDK;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDF37237160650AA00F7B72A /* Build configuration list for PBXProject "GSSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF3726D160650AA00F7B72A /* Debug */,
+				BDF3726E160650AA00F7B72A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDF3726F160650AA00F7B72A /* Build configuration list for PBXNativeTarget "GSSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF37270160650AA00F7B72A /* Debug */,
+				BDF37271160650AA00F7B72A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDF37234160650AA00F7B72A /* Project object */;
+}
