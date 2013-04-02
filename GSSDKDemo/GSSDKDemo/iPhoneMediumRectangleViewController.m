@@ -64,7 +64,9 @@
 }
 
 - (BOOL)greystripeShouldLogAdID {
-    return TRUE;
+    
+    // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
+    return FALSE;
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView {
@@ -75,6 +77,10 @@
         self.statusLabel.text = @"Medium Rectangle Ad successfully fetched.";
         [mediumRectangleButton setEnabled:YES];
     }
+    
+    // Use the a_ad object to return the adID value for debugging purposes
+    NSString *gsAdId = [a_ad adID];
+    NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
 - (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {

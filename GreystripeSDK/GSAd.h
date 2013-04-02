@@ -103,4 +103,6 @@ typedef enum GSAdError
  */
 - (void)fetch;
 
+- (NSString *)adID;
+
 @end

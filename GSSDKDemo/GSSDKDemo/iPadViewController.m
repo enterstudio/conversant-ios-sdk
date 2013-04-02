@@ -97,6 +97,12 @@
     return TRUE;
 }
 
+- (BOOL)greystripeShouldLogAdID {
+    
+    // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
+    return FALSE;
+}
+
 - (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad {
     if (a_ad == myLeaderboardAd) {
         self.statusLabel.text = @"Leaderboard successfully fetched.";
@@ -108,6 +114,10 @@
         self.statusLabel.text = @"Fullscreen ad successfully fetched.";
         [displayFullscreenButton setEnabled:YES];
     }
+    
+    // Use the a_ad object to return the adID value for debugging purposes
+    NSString *gsAdId = [a_ad adID];
+    NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
 - (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {
