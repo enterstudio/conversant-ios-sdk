@@ -21,7 +21,7 @@
 
     // Override point for customization after application launch.
     
-    // To add 
+    // To pass location information to the Greystripe SDK, initialize CLLocationManager. See the delegate at the bottom of this page for more details.
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
@@ -67,9 +67,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     
+    // Use the call below to pass your location to the Greystripe SDK
+    
     [GSSDKInfo updateLocation:newLocation];
     
-    NSLog(@"%@", newLocation);
+    //Use the NSLogs below to see Location information in real time
+    
+    //NSLog(@"%@", newLocation);
     //NSLog(@"Lat: %f", newLocation.coordinate.latitude);
     //NSLog(@"Long: %f", newLocation.coordinate.longitude);
 }

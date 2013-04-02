@@ -156,11 +156,9 @@
 - (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad {
     self.statusLabel.text = @"Greystripe ad collapsed.";
 }
-
 - (void)greystripeWillPresentModalViewController {
     self.statusLabel.text = @"Greystripe opening fullscreen.";
 }
-
 - (void)greystripeDidDismissModalViewController {
     self.statusLabel.text = @"Greystripe closed fullscreen.";
 }

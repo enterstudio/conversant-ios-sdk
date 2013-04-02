@@ -51,5 +51,7 @@
 - (void)greystripeAdClickedThrough:(id<GSAd>)a_ad;
 - (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad;
 - (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad;
+- (void)greystripeWillPresentModalViewController;
+- (void)greystripeDidDismissModalViewController;
 
 @end

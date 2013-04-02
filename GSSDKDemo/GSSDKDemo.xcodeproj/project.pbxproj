@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F368A07170A05D7008B2AFF /* libGreystripeSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F368A06170A05D7008B2AFF /* libGreystripeSDK.a */; };
 		7F58555516F12FF00044BFA6 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F58555416F12FF00044BFA6 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7F58555D16F131D30044BFA6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F58555C16F131D30044BFA6 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7F58555F16F131D90044BFA6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F58555E16F131D90044BFA6 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -19,7 +20,6 @@
 		7FDAA7061657099E00345957 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA7051657099E00345957 /* AddressBook.framework */; };
 		7FDAA708165709A400345957 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA707165709A400345957 /* MobileCoreServices.framework */; };
 		7FDAA70A165709AA00345957 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAA709165709AA00345957 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7FDB75B316F7ECE60051A57F /* libGreystripeSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDB75B216F7ECE60051A57F /* libGreystripeSDK.a */; };
 		BD01F91C16066B77001092FF /* iPhoneMediumRectangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F91B16066B77001092FF /* iPhoneMediumRectangleViewController.m */; };
 		BD01F91F160684CA001092FF /* iPhoneFullscreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F91E160684CA001092FF /* iPhoneFullscreenViewController.m */; };
 		BD01F92516068D6D001092FF /* iPhoneInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F92416068D6D001092FF /* iPhoneInfoViewController.m */; };
@@ -61,6 +61,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F3689FE170A05D7008B2AFF /* GSAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAd.h; path = ../GreystripeSDK/GSAd.h; sourceTree = "<group>"; };
+		7F3689FF170A05D7008B2AFF /* GSAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAdDelegate.h; path = ../GreystripeSDK/GSAdDelegate.h; sourceTree = "<group>"; };
+		7F368A00170A05D7008B2AFF /* GSBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSBannerAdView.h; path = ../GreystripeSDK/GSBannerAdView.h; sourceTree = "<group>"; };
+		7F368A01170A05D7008B2AFF /* GSFullscreenAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSFullscreenAd.h; path = ../GreystripeSDK/GSFullscreenAd.h; sourceTree = "<group>"; };
+		7F368A02170A05D7008B2AFF /* GSLeaderboardAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSLeaderboardAdView.h; path = ../GreystripeSDK/GSLeaderboardAdView.h; sourceTree = "<group>"; };
+		7F368A03170A05D7008B2AFF /* GSMediumRectangleAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMediumRectangleAdView.h; path = ../GreystripeSDK/GSMediumRectangleAdView.h; sourceTree = "<group>"; };
+		7F368A04170A05D7008B2AFF /* GSMobileBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMobileBannerAdView.h; path = ../GreystripeSDK/GSMobileBannerAdView.h; sourceTree = "<group>"; };
+		7F368A05170A05D7008B2AFF /* GSSDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSSDKInfo.h; path = ../GreystripeSDK/GSSDKInfo.h; sourceTree = "<group>"; };
+		7F368A06170A05D7008B2AFF /* libGreystripeSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGreystripeSDK.a; path = ../GreystripeSDK/libGreystripeSDK.a; sourceTree = "<group>"; };
 		7F58555416F12FF00044BFA6 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		7F58555C16F131D30044BFA6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7F58555E16F131D90044BFA6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -73,15 +82,6 @@
 		7FDAA7051657099E00345957 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		7FDAA707165709A400345957 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7FDAA709165709AA00345957 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		7FDB75AA16F7ECE60051A57F /* GSAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAd.h; path = ../iOSSDK4.2/GSAd.h; sourceTree = "<group>"; };
-		7FDB75AB16F7ECE60051A57F /* GSAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAdDelegate.h; path = ../iOSSDK4.2/GSAdDelegate.h; sourceTree = "<group>"; };
-		7FDB75AC16F7ECE60051A57F /* GSBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSBannerAdView.h; path = ../iOSSDK4.2/GSBannerAdView.h; sourceTree = "<group>"; };
-		7FDB75AD16F7ECE60051A57F /* GSFullscreenAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSFullscreenAd.h; path = ../iOSSDK4.2/GSFullscreenAd.h; sourceTree = "<group>"; };
-		7FDB75AE16F7ECE60051A57F /* GSLeaderboardAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSLeaderboardAdView.h; path = ../iOSSDK4.2/GSLeaderboardAdView.h; sourceTree = "<group>"; };
-		7FDB75AF16F7ECE60051A57F /* GSMediumRectangleAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMediumRectangleAdView.h; path = ../iOSSDK4.2/GSMediumRectangleAdView.h; sourceTree = "<group>"; };
-		7FDB75B016F7ECE60051A57F /* GSMobileBannerAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSMobileBannerAdView.h; path = ../iOSSDK4.2/GSMobileBannerAdView.h; sourceTree = "<group>"; };
-		7FDB75B116F7ECE60051A57F /* GSSDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSSDKInfo.h; path = ../iOSSDK4.2/GSSDKInfo.h; sourceTree = "<group>"; };
-		7FDB75B216F7ECE60051A57F /* libGreystripeSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGreystripeSDK.a; path = ../iOSSDK4.2/libGreystripeSDK.a; sourceTree = "<group>"; };
 		BD01F91A16066B77001092FF /* iPhoneMediumRectangleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneMediumRectangleViewController.h; sourceTree = "<group>"; };
 		BD01F91B16066B77001092FF /* iPhoneMediumRectangleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneMediumRectangleViewController.m; sourceTree = "<group>"; };
 		BD01F91D160684CA001092FF /* iPhoneFullscreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneFullscreenViewController.h; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				BDF37281160652AF00F7B72A /* SystemConfiguration.framework in Frameworks */,
 				7F58555516F12FF00044BFA6 /* Twitter.framework in Frameworks */,
 				BDF37242160650AA00F7B72A /* UIKit.framework in Frameworks */,
-				7FDB75B316F7ECE60051A57F /* libGreystripeSDK.a in Frameworks */,
+				7F368A07170A05D7008B2AFF /* libGreystripeSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,15 +166,15 @@
 		7F58554916F12D160044BFA6 /* GreystripeSDK */ = {
 			isa = PBXGroup;
 			children = (
-				7FDB75AA16F7ECE60051A57F /* GSAd.h */,
-				7FDB75AB16F7ECE60051A57F /* GSAdDelegate.h */,
-				7FDB75AC16F7ECE60051A57F /* GSBannerAdView.h */,
-				7FDB75AD16F7ECE60051A57F /* GSFullscreenAd.h */,
-				7FDB75AE16F7ECE60051A57F /* GSLeaderboardAdView.h */,
-				7FDB75AF16F7ECE60051A57F /* GSMediumRectangleAdView.h */,
-				7FDB75B016F7ECE60051A57F /* GSMobileBannerAdView.h */,
-				7FDB75B116F7ECE60051A57F /* GSSDKInfo.h */,
-				7FDB75B216F7ECE60051A57F /* libGreystripeSDK.a */,
+				7F3689FE170A05D7008B2AFF /* GSAd.h */,
+				7F3689FF170A05D7008B2AFF /* GSAdDelegate.h */,
+				7F368A00170A05D7008B2AFF /* GSBannerAdView.h */,
+				7F368A01170A05D7008B2AFF /* GSFullscreenAd.h */,
+				7F368A02170A05D7008B2AFF /* GSLeaderboardAdView.h */,
+				7F368A03170A05D7008B2AFF /* GSMediumRectangleAdView.h */,
+				7F368A04170A05D7008B2AFF /* GSMobileBannerAdView.h */,
+				7F368A05170A05D7008B2AFF /* GSSDKInfo.h */,
+				7F368A06170A05D7008B2AFF /* libGreystripeSDK.a */,
 			);
 			name = GreystripeSDK;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				GCC_PREFIX_HEADER = "GSSDKDemo/GSSDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "GSSDKDemo/GSSDKDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = ../GreystripeSDK;
+				LIBRARY_SEARCH_PATHS = "\"../GreystripeSDK\"";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -478,7 +478,7 @@
 				GCC_PREFIX_HEADER = "GSSDKDemo/GSSDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "GSSDKDemo/GSSDKDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = ../GreystripeSDK;
+				LIBRARY_SEARCH_PATHS = "\"../GreystripeSDK\"";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
