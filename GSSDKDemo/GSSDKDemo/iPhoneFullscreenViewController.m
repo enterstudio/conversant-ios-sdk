@@ -17,22 +17,25 @@
 
 @implementation iPhoneFullscreenViewController
 
-@synthesize statusLabel, fetchFullscreenButton, displayFullscreenButton, myFullscreenAd;
+@synthesize displayFullscreenButton;
+@synthesize fetchFullscreenButton;
+@synthesize myFullscreenAd;
+@synthesize statusLabel;
+
+#pragma mark - UIViewController -
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
+
     //Init my fullscren ad object, and set the delegate to be this ViewController
     self.myFullscreenAd = [[GSFullscreenAd alloc] initWithDelegate:self];
-    
-    self.statusLabel.text = @" ";
 }
 
-#pragma mark - Button methods
+#pragma mark - IBAction Buttons -
 
-- (IBAction) fetchFullscreenButtonPressed:(id) sender {
+- (IBAction)fetchFullscreenButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Fetching an ad...";
     [fetchFullscreenButton setEnabled:NO];
     
@@ -40,7 +43,8 @@
     [myFullscreenAd fetch];
 }
 
-- (IBAction) displayFullscreenButtonPressed:(id) sender {
+- (IBAction)displayFullscreenButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Display Fullscreen Ad.";
     
     // Display Fullscreen Ad
@@ -50,28 +54,23 @@
     [fetchFullscreenButton setEnabled:YES];
 }
 
-#pragma mark - Protocol methods
+#pragma mark - Greystripe Protocol Methods -
 
-- (NSString *)greystripeGUID {
-    NSLog(@"Accessing GUID");
-    
-    // The Greystripe GUID is defined in Constants.h and preloaded in GSSDKDemo-Prefix.pch in this example
-    // Alternate example: You can also set the Greystripe GUID in the AppDelegate.m as well
-    return GSGUID;
-}
-
-- (BOOL)greystripeShouldLogAdID {
-
+- (BOOL)greystripeShouldLogAdID
+{
     // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
     return FALSE;
 }
 
-- (void)textViewDidChangeSelection:(UITextView *)textView {
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
     [textView resignFirstResponder];
 }
 
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad {
-    if (a_ad == myFullscreenAd) {
+- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
+{
+    if (a_ad == myFullscreenAd)
+    {
         self.statusLabel.text = @"Fullscreen ad successfully fetched.";
         [displayFullscreenButton setEnabled:YES];
     }
@@ -81,10 +80,12 @@
     NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {
+- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error
+{
     NSString *errorString =  @"";
     
-    switch(a_error) {
+    switch(a_error)
+    {
         case kGSNoNetwork:
             errorString = @"Error: No network connection available.";
             break;
@@ -116,14 +117,31 @@
     [fetchFullscreenButton setEnabled:YES];
 }
 
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad {
+- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad was clicked.";
 }
-- (void)greystripeWillPresentModalViewController {
+
+- (void)greystripeWillPresentModalViewController
+{
     self.statusLabel.text = @"Greystripe opening fullscreen.";
 }
-- (void)greystripeDidDismissModalViewController {
+
+- (void)greystripeWillDismissModalViewController
+{
+    self.statusLabel.text = @"Greystripe closing fullscreen.";
+}
+
+- (void)greystripeDidDismissModalViewController
+{
     self.statusLabel.text = @"Greystripe closed fullscreen.";
+}
+
+#pragma mark - Memory Management -
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end

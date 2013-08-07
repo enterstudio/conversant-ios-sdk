@@ -12,7 +12,17 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+// Greystripe SDK Test App ID / GUID
+#define GSGUID @"51d7ee3c-95fd-48d5-b648-c915209a00a5"
+
+// For quick testing and debugging, paste your app's Greystripe GUID below in "appGUID"
+// Comment out the #define line above and uncomment the #define line below
+// Clean and build your project for testing and debugging
+// #define GSGUID @"appGUID"
 
 @end

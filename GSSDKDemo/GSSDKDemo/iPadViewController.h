@@ -9,49 +9,36 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "GSAdDelegate.h"
-#import "GSLeaderboardAdView.h"
-#import "GSMediumRectangleAdView.h"
-#import "GSFullscreenAd.h"
 
-#define SCREEN_SIZE_IPHONE_CLASSIC 3.5
-#define SCREEN_SIZE_IPHONE_TALL 4.0
-#define SCREEN_SIZE_IPAD_CLASSIC 9.7
+@class GSLeaderboardAdView;
+@class GSMediumRectangleAdView;
+@class GSFullscreenAd;
 
-@interface iPadViewController : UIViewController <GSAdDelegate, MFMailComposeViewControllerDelegate>
+@interface iPadViewController : UIViewController <GSAdDelegate, MFMailComposeViewControllerDelegate> {
+    GSLeaderboardAdView *myLeaderboardAd;
+    GSMediumRectangleAdView *myMediumRectangleAd;
+}
 
-@property (nonatomic, retain) IBOutlet GSLeaderboardAdView* myLeaderboardAd;
-@property (nonatomic, retain) IBOutlet GSMediumRectangleAdView* myMediumRectangleAd;
-@property (strong, nonatomic) GSFullscreenAd* myFullscreenAd;
+@property (nonatomic, retain) GSFullscreenAd *myFullscreenAd;
 
-@property (strong, nonatomic) IBOutlet UILabel* guidTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel* guidLabel;
-@property (strong, nonatomic) IBOutlet UILabel* hashedIdLabel;
-@property (strong, nonatomic) IBOutlet UILabel* sdkVersionLabel;
-@property (strong, nonatomic) IBOutlet UILabel* statusLabel;
-@property (strong, nonatomic) IBOutlet UIButton* leaderboardButton;
-@property (strong, nonatomic) IBOutlet UIButton* mediumRectangleButton;
-@property (strong, nonatomic) IBOutlet UIButton* fetchFullscreenButton;
-@property (strong, nonatomic) IBOutlet UIButton* displayFullscreenButton;
+@property (nonatomic, retain) IBOutlet UILabel *deviceId;
+@property (nonatomic, retain) IBOutlet UILabel *deviceIdLabel;
+@property (nonatomic, retain) IBOutlet UILabel *guidLabel;
+@property (nonatomic, retain) IBOutlet UILabel *guidTitleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *sdkVersionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
+@property (nonatomic, retain) IBOutlet UIButton *displayFullscreenButton;
+@property (nonatomic, retain) IBOutlet UIButton *fetchFullscreenButton;
+@property (nonatomic, retain) IBOutlet UIButton *leaderboardButton;
+@property (nonatomic, retain) IBOutlet UIButton *mediumRectangleButton;
 
 //Button actions
+- (IBAction)displayFullscreenButtonPressed:(id)sender;
+- (IBAction)fetchFullscreenButtonPressed:(id)sender;
 - (IBAction)leaderboardButtonPressed:(id)sender;
 - (IBAction)mediumRectangleButtonPressed:(id)sender;
-- (IBAction)fetchFullscreenButtonPressed:(id)sender;
-- (IBAction)displayFullscreenButtonPressed:(id)sender;
 - (IBAction)openMail:(id)sender;
 
-//Protocol methods for defining basic ad behaviors
-- (UIViewController *)greystripeBannerDisplayViewController;
-- (NSString *)greystripeGUID;
-- (BOOL)greystripeBannerAutoload;
-
-//Delegate "events" to be notified of ad lifecycle
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad;
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error;
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad;
-- (void)greystripeWillPresentModalViewController;
-- (void)greystripeDidDismissModalViewController;
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @end

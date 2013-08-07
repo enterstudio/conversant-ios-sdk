@@ -13,24 +13,14 @@
 
 @interface iPhoneFullscreenViewController : UIViewController <GSAdDelegate>
 
-@property (strong, nonatomic) GSFullscreenAd* myFullscreenAd;
+@property (nonatomic, retain) GSFullscreenAd *myFullscreenAd;
 
-@property (strong, nonatomic) IBOutlet UILabel* statusLabel;
-@property (strong, nonatomic) IBOutlet UIButton* fetchFullscreenButton;
-@property (strong, nonatomic) IBOutlet UIButton* displayFullscreenButton;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
+@property (nonatomic, retain) IBOutlet UIButton *fetchFullscreenButton;
+@property (nonatomic, retain) IBOutlet UIButton *displayFullscreenButton;
 
 //Button actions
-- (IBAction)fetchFullscreenButtonPressed:(id)sender;
 - (IBAction)displayFullscreenButtonPressed:(id)sender;
-
-//Protocol methods for defining basic ad behaviors
-- (NSString *)greystripeGUID;
-
-//Delegate "events" to be notified of ad lifecycle
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad;
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error;
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad;
-- (void)greystripeWillPresentModalViewController;
-- (void)greystripeDidDismissModalViewController;
+- (IBAction)fetchFullscreenButtonPressed:(id)sender;
 
 @end

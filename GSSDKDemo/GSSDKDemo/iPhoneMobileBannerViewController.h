@@ -11,26 +11,14 @@
 
 @class GSMobileBannerAdView;
 
-@interface iPhoneMobileBannerViewController : UIViewController <GSAdDelegate>
+@interface iPhoneMobileBannerViewController : UIViewController <GSAdDelegate> {
+    GSMobileBannerAdView *myBannerAd;
+}
 
-@property (nonatomic, retain) IBOutlet GSMobileBannerAdView* myBannerAd;
-
-@property (strong, nonatomic) IBOutlet UILabel* statusLabel;
-@property (strong, nonatomic) IBOutlet UIButton* bannerButton;
+@property (nonatomic, retain) IBOutlet UIButton *bannerButton;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 
 //Button actions
 - (IBAction)bannerButtonPressed:(id)sender;
-
-//Protocol methods for defining basic ad behaviors
-- (UIViewController *)greystripeBannerDisplayViewController;
-- (NSString *)greystripeGUID;
-- (BOOL)greystripeBannerAutoload;
-
-//Delegate "events" to be notified of ad lifecycle
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad;
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error;
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad;
 
 @end

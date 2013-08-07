@@ -11,10 +11,11 @@
 
 @interface iPhoneInfoViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel* guidTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel* guidLabel;
-@property (strong, nonatomic) IBOutlet UILabel* hashedIdLabel;
-@property (strong, nonatomic) IBOutlet UILabel* sdkVersionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *deviceId;
+@property (nonatomic, retain) IBOutlet UILabel *deviceIdLabel;
+@property (nonatomic, retain) IBOutlet UILabel *guidLabel;
+@property (nonatomic, retain) IBOutlet UILabel *guidTitleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *sdkVersionLabel;
 
 - (IBAction)openMail:(id)sender;
 

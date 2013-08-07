@@ -8,6 +8,11 @@
 
 #import "iPadViewController.h"
 
+#import <AdSupport/ASIdentifierManager.h>
+#import "AppDelegate.h"
+#import "GSLeaderboardAdView.h"
+#import "GSMediumRectangleAdView.h"
+#import "GSFullscreenAd.h"
 #import "GSSDKInfo.h"
 
 @interface iPadViewController ()
@@ -16,35 +21,76 @@
 
 @implementation iPadViewController
 
-@synthesize guidTitleLabel, guidLabel, hashedIdLabel, sdkVersionLabel, statusLabel, leaderboardButton, mediumRectangleButton, myMediumRectangleAd, myLeaderboardAd, myFullscreenAd, fetchFullscreenButton, displayFullscreenButton;
+@synthesize deviceId;
+@synthesize deviceIdLabel;
+@synthesize displayFullscreenButton;
+@synthesize fetchFullscreenButton;
+@synthesize guidLabel;
+@synthesize guidTitleLabel;
+@synthesize leaderboardButton;
+@synthesize mediumRectangleButton;
+@synthesize myFullscreenAd;
+@synthesize sdkVersionLabel;
+@synthesize statusLabel;
+
+#pragma mark - UIViewController -
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 
     //Grab the Greystripe GUID and add to label
     self.guidLabel.text = GSGUID;
     
     //Labels the Test GUID
     NSString *testGSGUID = [NSString stringWithFormat:@"51d7ee3c-95fd-48d5-b648-c915209a00a5"];
-    if( [GSGUID isEqualToString:testGSGUID] ) {
+    if( [GSGUID isEqualToString:testGSGUID] )
+    {
         self.guidTitleLabel.text = [NSString stringWithFormat:@"Greystripe Test GUID"];
     }
-    
+
     //Put an initial status into the status box
-    self.hashedIdLabel.text = [GSSDKInfo hashedDeviceId];
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+    {
+        self.deviceIdLabel.text = @"Hashed Device Id";
+        self.deviceId.text = [GSSDKInfo hashedDeviceId];
+    }
+    else
+    {
+        self.deviceIdLabel.text = @"IDFA Device Id";
+        self.deviceId.text = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    }
+    NSLog(@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]);
     
     //Populate SDK version and GS Device ID labels
     self.sdkVersionLabel.text = [NSString stringWithFormat:@"iOS %@", kGSSDKVersion];
-
+    
+    //Populate SDK version and GS Device ID labels
+    self.sdkVersionLabel.text = [NSString stringWithFormat:@"iOS %@", kGSSDKVersion];
+    
+    myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
+    
+    [myMediumRectangleAd setFrame:CGRectMake(234, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
+    
+    myLeaderboardAd = [[GSLeaderboardAdView alloc] initWithDelegate:self];
+    
+    [myLeaderboardAd setFrame:CGRectMake(20, 524, kGSLeaderboardWidth, kGSLeaderboardHeight)];
+    
     //Init my fullscren ad object, and set the delegate to be this ViewController
     self.myFullscreenAd = [[GSFullscreenAd alloc] initWithDelegate:self];
 }
 
-#pragma mark - Button methods
+#pragma mark - Greystripe UIViewController -
 
-- (IBAction) mediumRectangleButtonPressed:(id) sender {
+- (UIViewController *)greystripeBannerDisplayViewController
+{
+    return self;
+}
+
+#pragma mark - IBAction Buttons -
+
+- (IBAction)mediumRectangleButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Fetching an ad...";
     [mediumRectangleButton setEnabled:NO];
 
@@ -52,7 +98,8 @@
     [myMediumRectangleAd fetch];
 }
 
-- (IBAction)leaderboardButtonPressed: (id) sender {
+- (IBAction)leaderboardButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Fetching an ad...";
     [leaderboardButton setEnabled:NO];
 
@@ -60,7 +107,8 @@
     [myLeaderboardAd fetch];
 }
 
-- (IBAction) fetchFullscreenButtonPressed:(id) sender {
+- (IBAction)fetchFullscreenButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Fetching an ad...";
     [fetchFullscreenButton setEnabled:NO];
     
@@ -68,7 +116,8 @@
     [myFullscreenAd fetch];
 }
 
-- (IBAction) displayFullscreenButtonPressed:(id) sender {
+- (IBAction)displayFullscreenButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Display Fullscreen Ad.";
 
     // Display Fullscreen Ad
@@ -78,39 +127,59 @@
     [fetchFullscreenButton setEnabled:YES];
 }
 
-#pragma mark - Protocol methods
+- (IBAction)openMail:(id)sender {
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        mailer.mailComposeDelegate = self;
+        [mailer setSubject:[NSString stringWithFormat:@"Greystripe iOS %@ SDK Info", kGSSDKVersion]];
+        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString], kGSSDKVersion, GSGUID];
+        [mailer setMessageBody:emailBody isHTML:YES];
+        mailer.modalPresentationStyle = UIModalPresentationPageSheet;
+        [self presentModalViewController:mailer animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                        message:@"Your device doesn't support the composer sheet"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
 
-- (UIViewController *)greystripeBannerDisplayViewController
+#pragma mark - Greystripe Protocol Methods -
+
+
+- (BOOL)greystripeBannerAutoload
 {
-    return self;
+    // Return TRUE to autoload an ad
+    return FALSE;
 }
 
-- (NSString *)greystripeGUID {
-    NSLog(@"Accessing GUID");
-    
-    // The Greystripe GUID is defined in Constants.h and preloaded in GSSDKDemo-Prefix.pch in this example
-    // Alternate example: You can also set the Greystripe GUID in the AppDelegate.m as well
-    return GSGUID;
-}
-
-- (BOOL)greystripeBannerAutoload {
-    return TRUE;
-}
-
-- (BOOL)greystripeShouldLogAdID {
-    
+- (BOOL)greystripeShouldLogAdID
+{    
     // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
     return FALSE;
 }
 
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad {
-    if (a_ad == myLeaderboardAd) {
+- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
+{
+    if (a_ad == myLeaderboardAd)
+    {
+        [self.view addSubview:myLeaderboardAd];
+
         self.statusLabel.text = @"Leaderboard successfully fetched.";
         [leaderboardButton setEnabled:YES];
-    } else if (a_ad == myMediumRectangleAd) {
+    }
+    else if (a_ad == myMediumRectangleAd)
+    {
+        [self.view addSubview:myMediumRectangleAd];
+
         self.statusLabel.text = @"Medium Rectangle Ad successfully fetched.";
         [mediumRectangleButton setEnabled:YES];
-    } else if (a_ad == myFullscreenAd) {
+    }
+    else if (a_ad == myFullscreenAd)
+    {
         self.statusLabel.text = @"Fullscreen ad successfully fetched.";
         [displayFullscreenButton setEnabled:YES];
     }
@@ -120,10 +189,12 @@
     NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {
+- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error
+{
     NSString *errorString =  @"";
     
-    switch(a_error) {
+    switch(a_error)
+    {
         case kGSNoNetwork:
             errorString = @"Error: No network connection available.";
             break;
@@ -157,45 +228,42 @@
     [leaderboardButton setEnabled:YES];
 }
 
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad {
+- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad was clicked.";
 }
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerWillExpand:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad expanded.";
 }
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerDidCollapse:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad collapsed.";
 }
-- (void)greystripeWillPresentModalViewController {
+
+- (void)greystripeWillPresentModalViewController
+{
     self.statusLabel.text = @"Greystripe opening fullscreen.";
 }
-- (void)greystripeDidDismissModalViewController {
+
+- (void)greystripeWillDismissModalViewController
+{
+    self.statusLabel.text = @"Greystripe closing fullscreen.";
+}
+
+- (void)greystripeDidDismissModalViewController
+{
     self.statusLabel.text = @"Greystripe closed fullscreen.";
 }
 
-- (IBAction)openMail:(id)sender {
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-        mailer.mailComposeDelegate = self;
-        [mailer setSubject:[NSString stringWithFormat:@"Greystripe iOS %@ SDK Info", kGSSDKVersion]];
-        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Hashed Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [GSSDKInfo hashedDeviceId], kGSSDKVersion, GSGUID];
-        [mailer setMessageBody:emailBody isHTML:YES];
-        //mailer.modalPresentationStyle = UIModalPresentationPageSheet;
-        [self presentModalViewController:mailer animated:YES];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
-        message:@"Your device doesn't support the composer sheet"
-        delegate:nil
-        cancelButtonTitle:@"OK"
-        otherButtonTitles:nil];
-        [alert show];
-    }
-}
+#pragma mark - MFMailComposeViewController -
 
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-    switch (result) {
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
         case MFMailComposeResultCancelled:
             NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
             break;
@@ -214,6 +282,13 @@
     }
     // Remove the mail view
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Memory Management -
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end

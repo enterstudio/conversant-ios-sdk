@@ -17,26 +17,36 @@
 
 @implementation iPhoneMediumRectangleViewController
 
-@synthesize statusLabel, mediumRectangleButton, myMediumRectangleAd;
+@synthesize mediumRectangleButton;
+@synthesize statusLabel;
+
+#pragma mark - UIViewController -
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
+    
+    [myMediumRectangleAd setFrame:CGRectMake(10, 10, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+#pragma mark - Greystripe UIViewController -
+
+- (UIViewController *)greystripeBannerDisplayViewController
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+    return self;
 }
 
-#pragma mark - Button methods
+#pragma mark - IBAction Button -
 
-- (IBAction) mediumRectangleButtonPressed:(id) sender {
+- (IBAction)mediumRectangleButtonPressed:(id)sender
+{
     self.statusLabel.text = @"Fetching an ad...";
     [mediumRectangleButton setEnabled:NO];
     
@@ -44,36 +54,26 @@
     [myMediumRectangleAd fetch];
 }
 
-#pragma mark - Protocol methods
+#pragma mark - Greystripe Protocol Methods -
 
-- (UIViewController *)greystripeBannerDisplayViewController
+- (BOOL)greystripeBannerAutoload
 {
-    return self;
+    // Return TRUE to autoload an ad
+    return FALSE;
 }
 
-- (NSString *)greystripeGUID {
-    NSLog(@"Accessing GUID");
-    
-    // The Greystripe GUID is defined in Constants.h and preloaded in GSSDKDemo-Prefix.pch in this example
-    // Alternate example: You can also set the Greystripe GUID in the AppDelegate.m as well
-    return GSGUID;
-}
-
-- (BOOL)greystripeBannerAutoload {
-    return TRUE;
-}
-
-- (BOOL)greystripeShouldLogAdID {
-    
+- (BOOL)greystripeShouldLogAdID
+{
     // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
     return FALSE;
 }
 
-- (void)textViewDidChangeSelection:(UITextView *)textView {
-    [textView resignFirstResponder];
-}
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad {
-    if (a_ad == myMediumRectangleAd) {
+- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
+{
+    if (a_ad == myMediumRectangleAd)
+    {
+        [self.view addSubview:myMediumRectangleAd];
+
         self.statusLabel.text = @"Medium Rectangle Ad successfully fetched.";
         [mediumRectangleButton setEnabled:YES];
     }
@@ -83,10 +83,12 @@
     NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {
+- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error
+{
     NSString *errorString =  @"";
     
-    switch(a_error) {
+    switch(a_error)
+    {
         case kGSNoNetwork:
             errorString = @"Error: No network connection available.";
             break;
@@ -118,20 +120,26 @@
     [mediumRectangleButton setEnabled:YES];
 }
 
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad {
+- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad was clicked.";
 }
-- (void)greystripeWillPresentModalViewController {
-    self.statusLabel.text = @"Greystripe opening fullscreen.";
-}
-- (void)greystripeDidDismissModalViewController {
-    self.statusLabel.text = @"Greystripe closed fullscreen.";
-}
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerWillExpand:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad expanded.";
 }
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerDidCollapse:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad collapsed.";
+}
+
+#pragma mark - Memory Management -
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end

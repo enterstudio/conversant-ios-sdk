@@ -11,26 +11,14 @@
 
 @class GSMediumRectangleAdView;
 
-@interface iPhoneMediumRectangleViewController : UIViewController <GSAdDelegate>
+@interface iPhoneMediumRectangleViewController : UIViewController <GSAdDelegate> {
+    GSMediumRectangleAdView *myMediumRectangleAd;
+}
 
-@property (nonatomic, retain) IBOutlet GSMediumRectangleAdView* myMediumRectangleAd;
-
-@property (strong, nonatomic) IBOutlet UILabel* statusLabel;
-@property (strong, nonatomic) IBOutlet UIButton* mediumRectangleButton;
+@property (nonatomic, retain) IBOutlet UIButton *mediumRectangleButton;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 
 //Button actions
 - (IBAction)mediumRectangleButtonPressed:(id)sender;
-
-//Protocol methods for defining basic ad behaviors
-- (UIViewController *)greystripeBannerDisplayViewController;
-- (NSString *)greystripeGUID;
-- (BOOL)greystripeBannerAutoload;
-
-//Delegate "events" to be notified of ad lifecycle
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad;
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error;
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad;
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad;
 
 @end

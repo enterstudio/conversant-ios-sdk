@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="tNw-vJ-kLR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="tNw-vJ-kLR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -66,22 +66,6 @@
                                     <action selector="leaderboardButtonPressed:" destination="tNw-vJ-kLR" eventType="touchUpInside" id="9fA-4y-DoV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="3mX-Hm-uue" customClass="GSMediumRectangleAdView">
-                                <rect key="frame" x="234" y="20" width="300" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="tNw-vJ-kLR" id="Lg1-Ae-JXZ"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" id="GUL-Zg-tcA" customClass="GSLeaderboardAdView">
-                                <rect key="frame" x="20" y="524" width="728" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="tNw-vJ-kLR" id="QKB-fv-85v"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hashed Device Id" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SqC-SZ-P3O">
                                 <rect key="frame" x="20" y="748" width="504" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
@@ -203,15 +187,14 @@
                         <color key="backgroundColor" red="0.49803921569999998" green="0.4941176471" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="deviceId" destination="KQX-6N-rID" id="q7n-Nb-n8k"/>
+                        <outlet property="deviceIdLabel" destination="SqC-SZ-P3O" id="xhz-MI-Ijt"/>
                         <outlet property="displayFullscreenButton" destination="Dxd-GR-54i" id="hp8-f0-R8l"/>
                         <outlet property="fetchFullscreenButton" destination="wXd-Q7-TFW" id="HBU-mS-roL"/>
                         <outlet property="guidLabel" destination="WJk-86-iSJ" id="RoT-5m-WcB"/>
                         <outlet property="guidTitleLabel" destination="Ibn-mJ-LNn" id="UeA-Z8-C3Y"/>
-                        <outlet property="hashedIdLabel" destination="KQX-6N-rID" id="T3w-pb-5Hj"/>
                         <outlet property="leaderboardButton" destination="oIH-uc-Jna" id="T5D-YN-UPB"/>
                         <outlet property="mediumRectangleButton" destination="muq-Ix-zml" id="f1r-aT-v00"/>
-                        <outlet property="myLeaderboardAd" destination="GUL-Zg-tcA" id="NBq-Tt-N5e"/>
-                        <outlet property="myMediumRectangleAd" destination="3mX-Hm-uue" id="Fdj-pn-3mB"/>
                         <outlet property="sdkVersionLabel" destination="x8H-fI-8EO" id="DjX-BN-w2q"/>
                         <outlet property="statusLabel" destination="14h-nE-qdg" id="0hl-aq-fVF"/>
                     </connections>
@@ -222,21 +205,6 @@
         </scene>
     </scenes>
     <classes>
-        <class className="GSAdView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSAdView.h"/>
-        </class>
-        <class className="GSBannerAdView" superclassName="GSAdView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSBannerAdView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="GSLeaderboardAdView" superclassName="GSBannerAdView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSLeaderboardAdView.h"/>
-        </class>
-        <class className="GSMediumRectangleAdView" superclassName="GSBannerAdView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSMediumRectangleAdView.h"/>
-        </class>
         <class className="iPadViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/iPadViewController.h"/>
             <relationships>
@@ -245,15 +213,14 @@
                 <relationship kind="action" name="leaderboardButtonPressed:"/>
                 <relationship kind="action" name="mediumRectangleButtonPressed:"/>
                 <relationship kind="action" name="openMail:"/>
+                <relationship kind="outlet" name="deviceId" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deviceIdLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="displayFullscreenButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="fetchFullscreenButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="guidLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="guidTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hashedIdLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="leaderboardButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mediumRectangleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="myLeaderboardAd" candidateClass="GSLeaderboardAdView"/>
-                <relationship kind="outlet" name="myMediumRectangleAd" candidateClass="GSMediumRectangleAdView"/>
                 <relationship kind="outlet" name="sdkVersionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
             </relationships>

@@ -8,6 +8,8 @@
 
 #import "iPhoneInfoViewController.h"
 
+#import <AdSupport/ASIdentifierManager.h>
+#import "AppDelegate.h"
 #import "GSSDKInfo.h"
 
 @interface iPhoneInfoViewController ()
@@ -16,39 +18,61 @@
 
 @implementation iPhoneInfoViewController
 
-@synthesize guidTitleLabel, guidLabel, hashedIdLabel, sdkVersionLabel;
+@synthesize deviceId;
+@synthesize deviceIdLabel;
+@synthesize guidLabel;
+@synthesize guidTitleLabel;
+@synthesize sdkVersionLabel;
+
+#pragma mark - UIViewController -
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     //Grab the Greystripe GUID and add to label
     self.guidLabel.text = GSGUID;
 
     //Labels the Test GUID
     NSString *testGSGUID = [NSString stringWithFormat:@"51d7ee3c-95fd-48d5-b648-c915209a00a5"];
-    if( [GSGUID isEqualToString:testGSGUID] ) {
+    
+    if( [GSGUID isEqualToString:testGSGUID] )
+    {
         self.guidTitleLabel.text = [NSString stringWithFormat:@"Greystripe Test GUID"];
     }
-  
+    
     //Put an initial status into the status box
-    self.hashedIdLabel.text = [GSSDKInfo hashedDeviceId];
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+    {
+        self.deviceIdLabel.text = @"Hashed Device Id";
+        self.deviceId.text = [GSSDKInfo hashedDeviceId];
+    }
+    else
+    {
+        self.deviceIdLabel.text = @"IDFA Device Id";
+        self.deviceId.text = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    }
+    NSLog(@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]);
     
     //Populate SDK version and GS Device ID labels
     self.sdkVersionLabel.text = [NSString stringWithFormat:@"iOS %@", kGSSDKVersion];
 }
 
-- (IBAction)openMail:(id)sender {
-    if ([MFMailComposeViewController canSendMail]) {
+#pragma mark - IBAction Button -
+
+- (IBAction)openMail:(id)sender
+{    
+    if ([MFMailComposeViewController canSendMail])
+    {
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
         [mailer setSubject:[NSString stringWithFormat:@"Greystripe iOS %@ SDK Info", kGSSDKVersion]];
-        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Hashed Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [GSSDKInfo hashedDeviceId], kGSSDKVersion, GSGUID];
+        NSString *emailBody = [NSString stringWithFormat:@"<p><b>Device Id:</b> %@ </p><p><b>Greystripe SDK Version:</b> iOS %@</p><p><b>Greystripe GUID:</b> %@</p><p><b>Documentation Resources:</b> <a href=\"http://wiki.greystripe.com\">http://wiki.greystripe.com</a></p><p><b>Questions? Contact GS Support:</b> <a href=\"mailto:support@greystripe.com\">support@greystripe.com</a></p>", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString], kGSSDKVersion, GSGUID];
         [mailer setMessageBody:emailBody isHTML:YES];
         [self presentModalViewController:mailer animated:YES];
     }
-    else {
+    else
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
         message:@"Your device doesn't support the composer sheet"
         delegate:nil
@@ -58,8 +82,12 @@
     }
 }
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-    switch (result) {
+#pragma mark - MFMailComposeViewController -
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
         case MFMailComposeResultCancelled:
             NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
             break;
@@ -78,6 +106,13 @@
     }
     // Remove the mail view
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Memory Management -
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end

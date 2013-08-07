@@ -17,72 +17,65 @@
 
 @implementation iPhoneMobileBannerViewController
 
-@synthesize statusLabel, bannerButton, myBannerAd;
+@synthesize bannerButton;
+@synthesize statusLabel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - UIViewController -
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewWillAppear:animated];
+    
+    myBannerAd = [[GSMobileBannerAdView alloc] initWithDelegate:self];
+    
+    [myBannerAd setFrame:CGRectMake(0, 0, kGSMobileBannerWidth, kGSMobileBannerHeight)];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
-}
+#pragma mark - Greystripe UIViewController -
 
-//Button methods
-
-- (IBAction)bannerButtonPressed: (id) sender {
-    self.statusLabel.text = @"Fetching an ad...";
-    [bannerButton setEnabled:NO];
-
-    //Fetch Banner Ad
-    [myBannerAd fetch];
-}
-
-//Protocol methods
 - (UIViewController *)greystripeBannerDisplayViewController
 {
     return self;
 }
 
-- (NSString *)greystripeGUID {
-    NSLog(@"Accessing GUID");
+#pragma mark - IBAction Button -
+
+- (IBAction)bannerButtonPressed:(id)sender
+{
+    self.statusLabel.text = @"Fetching an ad...";
+    [bannerButton setEnabled:NO];
     
-    // The Greystripe GUID is defined in Constants.h and preloaded in GSSDKDemo-Prefix.pch in this example
-    // Alternate example: You can also set the Greystripe GUID in the AppDelegate.m as well
-    return GSGUID;
+    // Fetch Banner Ad
+    [myBannerAd fetch];
 }
 
-- (BOOL)greystripeBannerAutoload {
-    return TRUE;
-}
+#pragma mark - Greystripe Protocol Methods -
 
-- (BOOL)greystripeShouldLogAdID {
-    
-    // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes.
+- (BOOL)greystripeBannerAutoload
+{
+    // Return TRUE to autoload an ad
     return FALSE;
 }
 
-- (void)textViewDidChangeSelection:(UITextView *)textView {
-    [textView resignFirstResponder];
+- (BOOL)greystripeShouldLogAdID
+{
+    // Return TRUE to log the AdID in an NSLog. Useful for debugging purposes
+    return FALSE;
 }
-- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad {
-    if (a_ad == myBannerAd) {
+
+- (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
+{
+    if (a_ad == myBannerAd)
+    {
+        [self.view addSubview:myBannerAd];
+        
         self.statusLabel.text = @"Small banner successfully fetched.";
+
         [bannerButton setEnabled:YES];
     }
     
@@ -91,10 +84,12 @@
     NSLog(@"AdId NSString Value: %@", gsAdId);
 }
 
-- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error {
+- (void)greystripeAdFetchFailed:(id<GSAd>)a_ad withError:(GSAdError)a_error
+{
     NSString *errorString =  @"";
     
-    switch(a_error) {
+    switch(a_error)
+    {
         case kGSNoNetwork:
             errorString = @"Error: No network connection available.";
             break;
@@ -126,21 +121,26 @@
     [bannerButton setEnabled:YES];
 }
 
-- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad {
+- (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad was clicked.";
 }
-- (void)greystripeBannerAdWillExpand:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerWillExpand:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad expanded.";
 }
-- (void)greystripeBannerAdDidCollapse:(id<GSAd>)a_ad {
+
+- (void)greystripeBannerDidCollapse:(id<GSAd>)a_ad
+{
     self.statusLabel.text = @"Greystripe ad collapsed.";
 }
 
+#pragma mark - Memory Management -
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
