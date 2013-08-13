@@ -39,6 +39,4 @@
 - (IBAction)mediumRectangleButtonPressed:(id)sender;
 - (IBAction)openMail:(id)sender;
 
-#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
 @end

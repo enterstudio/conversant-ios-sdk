@@ -131,13 +131,13 @@
  * Sent when a banner ad's view is about to expand to take over the
  * full screen.
  */
-- (void)greystripeBannerAdWillExpand;
+- (void)greystripeBannerWillExpand;
 
 /**
  * Sent after an expanded banner ad has collapsed back to it's normal
  * size.
  */
-- (void)greystripeBannerAdDidCollapse;
+- (void)greystripeBannerDidCollapse;
 
 /**
  * Return YES in this method in order to log out the ID for each ad. This
