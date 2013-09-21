@@ -11,18 +11,19 @@
 #import <AdSupport/ASIdentifierManager.h>
 #import "AppDelegate.h"
 #import "GSSDKInfo.h"
+#import <MessageUI/MessageUI.h>
 
-@interface iPhoneInfoViewController ()
+@interface iPhoneInfoViewController () <MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, weak) IBOutlet UILabel *deviceId;
+@property (nonatomic, weak) IBOutlet UILabel *deviceIdLabel;
+@property (nonatomic, weak) IBOutlet UILabel *guidLabel;
+@property (nonatomic, weak) IBOutlet UILabel *guidTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *sdkVersionLabel;
 
 @end
 
 @implementation iPhoneInfoViewController
-
-@synthesize deviceId;
-@synthesize deviceIdLabel;
-@synthesize guidLabel;
-@synthesize guidTitleLabel;
-@synthesize sdkVersionLabel;
 
 #pragma mark - UIViewController -
 

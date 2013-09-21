@@ -10,28 +10,33 @@
 
 #import <AdSupport/ASIdentifierManager.h>
 #import "AppDelegate.h"
+#import "GSAdDelegate.h"
 #import "GSLeaderboardAdView.h"
 #import "GSMediumRectangleAdView.h"
 #import "GSFullscreenAd.h"
 #import "GSSDKInfo.h"
+#import <MessageUI/MessageUI.h>
 
-@interface iPadViewController ()
+@interface iPadViewController () <GSAdDelegate, MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, strong) GSFullscreenAd *myFullscreenAd;
+@property (nonatomic, strong) GSLeaderboardAdView *myLeaderboardAd;
+@property (nonatomic, strong) GSMediumRectangleAdView *myMediumRectangleAd;
+
+@property (nonatomic, weak) IBOutlet UILabel *deviceId;
+@property (nonatomic, weak) IBOutlet UILabel *deviceIdLabel;
+@property (nonatomic, weak) IBOutlet UILabel *guidLabel;
+@property (nonatomic, weak) IBOutlet UILabel *guidTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *sdkVersionLabel;
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak) IBOutlet UIButton *displayFullscreenButton;
+@property (nonatomic, weak) IBOutlet UIButton *fetchFullscreenButton;
+@property (nonatomic, weak) IBOutlet UIButton *leaderboardButton;
+@property (nonatomic, weak) IBOutlet UIButton *mediumRectangleButton;
 
 @end
 
 @implementation iPadViewController
-
-@synthesize deviceId;
-@synthesize deviceIdLabel;
-@synthesize displayFullscreenButton;
-@synthesize fetchFullscreenButton;
-@synthesize guidLabel;
-@synthesize guidTitleLabel;
-@synthesize leaderboardButton;
-@synthesize mediumRectangleButton;
-@synthesize myFullscreenAd;
-@synthesize sdkVersionLabel;
-@synthesize statusLabel;
 
 #pragma mark - UIViewController -
 
@@ -68,13 +73,13 @@
     //Populate SDK version and GS Device ID labels
     self.sdkVersionLabel.text = [NSString stringWithFormat:@"iOS %@", kGSSDKVersion];
     
-    myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
+    self.myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
     
-    [myMediumRectangleAd setFrame:CGRectMake(234, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
+    [self.myMediumRectangleAd setFrame:CGRectMake(([self.view bounds].size.width - kGSMediumRectangleWidth)/2, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
     
-    myLeaderboardAd = [[GSLeaderboardAdView alloc] initWithDelegate:self];
+    self.myLeaderboardAd = [[GSLeaderboardAdView alloc] initWithDelegate:self];
     
-    [myLeaderboardAd setFrame:CGRectMake(20, 524, kGSLeaderboardWidth, kGSLeaderboardHeight)];
+    [self.myLeaderboardAd setFrame:CGRectMake(([self.view bounds].size.width - kGSLeaderboardWidth)/2, 524, kGSLeaderboardWidth, kGSLeaderboardHeight)];
     
     //Init my fullscren ad object, and set the delegate to be this ViewController
     self.myFullscreenAd = [[GSFullscreenAd alloc] initWithDelegate:self];
@@ -92,28 +97,28 @@
 - (IBAction)mediumRectangleButtonPressed:(id)sender
 {
     self.statusLabel.text = @"Fetching an ad...";
-    [mediumRectangleButton setEnabled:NO];
+    [self.mediumRectangleButton setEnabled:NO];
 
     // Fetch Medium Rectangle Ad
-    [myMediumRectangleAd fetch];
+    [self.myMediumRectangleAd fetch];
 }
 
 - (IBAction)leaderboardButtonPressed:(id)sender
 {
     self.statusLabel.text = @"Fetching an ad...";
-    [leaderboardButton setEnabled:NO];
+    [self.leaderboardButton setEnabled:NO];
 
     // Fetch Leaderboard Ad
-    [myLeaderboardAd fetch];
+    [self.myLeaderboardAd fetch];
 }
 
 - (IBAction)fetchFullscreenButtonPressed:(id)sender
 {
     self.statusLabel.text = @"Fetching an ad...";
-    [fetchFullscreenButton setEnabled:NO];
+    [self.fetchFullscreenButton setEnabled:NO];
     
     // Fetch Fullscreen Ad
-    [myFullscreenAd fetch];
+    [self.myFullscreenAd fetch];
 }
 
 - (IBAction)displayFullscreenButtonPressed:(id)sender
@@ -121,10 +126,10 @@
     self.statusLabel.text = @"Display Fullscreen Ad.";
 
     // Display Fullscreen Ad
-    [myFullscreenAd displayFromViewController:self];
+    [self.myFullscreenAd displayFromViewController:self];
     
-    [displayFullscreenButton setEnabled:NO];
-    [fetchFullscreenButton setEnabled:YES];
+    [self.displayFullscreenButton setEnabled:NO];
+    [self.fetchFullscreenButton setEnabled:YES];
 }
 
 - (IBAction)openMail:(id)sender {
@@ -164,24 +169,24 @@
 
 - (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
 {
-    if (a_ad == myLeaderboardAd)
+    if (a_ad == self.myLeaderboardAd)
     {
-        [self.view addSubview:myLeaderboardAd];
+        [self.view addSubview:self.myLeaderboardAd];
 
         self.statusLabel.text = @"Leaderboard successfully fetched.";
-        [leaderboardButton setEnabled:YES];
+        [self.leaderboardButton setEnabled:YES];
     }
-    else if (a_ad == myMediumRectangleAd)
+    else if (a_ad == self.myMediumRectangleAd)
     {
-        [self.view addSubview:myMediumRectangleAd];
+        [self.view addSubview:self.myMediumRectangleAd];
 
         self.statusLabel.text = @"Medium Rectangle Ad successfully fetched.";
-        [mediumRectangleButton setEnabled:YES];
+        [self.mediumRectangleButton setEnabled:YES];
     }
-    else if (a_ad == myFullscreenAd)
+    else if (a_ad == self.myFullscreenAd)
     {
         self.statusLabel.text = @"Fullscreen ad successfully fetched.";
-        [displayFullscreenButton setEnabled:YES];
+        [self.displayFullscreenButton setEnabled:YES];
     }
     
     // Use the a_ad object to return the adID value for debugging purposes
@@ -223,9 +228,9 @@
             errorString = @"An invalid error code was returned. Thats really bad!";
     }
     self.statusLabel.text = [NSString stringWithFormat:@"Greystripe failed with error: %@",errorString];
-    [mediumRectangleButton setEnabled:YES];
-    [fetchFullscreenButton setEnabled:YES];
-    [leaderboardButton setEnabled:YES];
+    [self.mediumRectangleButton setEnabled:YES];
+    [self.fetchFullscreenButton setEnabled:YES];
+    [self.leaderboardButton setEnabled:YES];
 }
 
 - (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
@@ -282,6 +287,15 @@
     }
     // Remove the mail view
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Banner Rotation Management -
+
+- (void) viewWillLayoutSubviews
+{
+    [self.myMediumRectangleAd setFrame:CGRectMake(([self.view bounds].size.width - kGSMediumRectangleWidth)/2, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
+    
+    [self.myLeaderboardAd setFrame:CGRectMake(([self.view bounds].size.width - kGSLeaderboardWidth)/2, 524, kGSLeaderboardWidth, kGSLeaderboardHeight)];
 }
 
 #pragma mark - Memory Management -

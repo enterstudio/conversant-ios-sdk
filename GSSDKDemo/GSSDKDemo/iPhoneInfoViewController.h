@@ -7,16 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
 
-@interface iPhoneInfoViewController : UIViewController <MFMailComposeViewControllerDelegate>
-
-@property (nonatomic, retain) IBOutlet UILabel *deviceId;
-@property (nonatomic, retain) IBOutlet UILabel *deviceIdLabel;
-@property (nonatomic, retain) IBOutlet UILabel *guidLabel;
-@property (nonatomic, retain) IBOutlet UILabel *guidTitleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *sdkVersionLabel;
-
-- (IBAction)openMail:(id)sender;
+@interface iPhoneInfoViewController : UIViewController
 
 @end

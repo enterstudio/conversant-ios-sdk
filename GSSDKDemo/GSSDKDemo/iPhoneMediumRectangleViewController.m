@@ -8,32 +8,29 @@
 
 #import "iPhoneMediumRectangleViewController.h"
 
+#import "GSAdDelegate.h"
 #import "GSMediumRectangleAdView.h"
 #import "GSSDKInfo.h"
 
-@interface iPhoneMediumRectangleViewController ()
+@interface iPhoneMediumRectangleViewController () <GSAdDelegate>
+
+@property (nonatomic, strong) GSMediumRectangleAdView *myMediumRectangleAd;
+@property (nonatomic, weak) IBOutlet UIButton *mediumRectangleButton;
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
 
 @end
 
 @implementation iPhoneMediumRectangleViewController
 
-@synthesize mediumRectangleButton;
-@synthesize statusLabel;
-
 #pragma mark - UIViewController -
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
-    
-    [myMediumRectangleAd setFrame:CGRectMake(10, 10, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.myMediumRectangleAd = [[GSMediumRectangleAdView alloc] initWithDelegate:self];
+    
+    [self.myMediumRectangleAd setFrame:CGRectMake(([self.view bounds].size.width - kGSMediumRectangleWidth)/2, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
 }
 
 #pragma mark - Greystripe UIViewController -
@@ -48,10 +45,10 @@
 - (IBAction)mediumRectangleButtonPressed:(id)sender
 {
     self.statusLabel.text = @"Fetching an ad...";
-    [mediumRectangleButton setEnabled:NO];
+    [self.mediumRectangleButton setEnabled:NO];
     
     //Fetch Medium Rectangle Ad
-    [myMediumRectangleAd fetch];
+    [self.myMediumRectangleAd fetch];
 }
 
 #pragma mark - Greystripe Protocol Methods -
@@ -70,12 +67,12 @@
 
 - (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
 {
-    if (a_ad == myMediumRectangleAd)
+    if (a_ad == self.myMediumRectangleAd)
     {
-        [self.view addSubview:myMediumRectangleAd];
+        [self.view addSubview:self.myMediumRectangleAd];
 
         self.statusLabel.text = @"Medium Rectangle Ad successfully fetched.";
-        [mediumRectangleButton setEnabled:YES];
+        [self.mediumRectangleButton setEnabled:YES];
     }
     
     // Use the a_ad object to return the adID value for debugging purposes
@@ -117,7 +114,7 @@
             errorString = @"An invalid error code was returned. Thats really bad!";
     }
     self.statusLabel.text = [NSString stringWithFormat:@"Greystripe failed with error: %@",errorString];
-    [mediumRectangleButton setEnabled:YES];
+    [self.mediumRectangleButton setEnabled:YES];
 }
 
 - (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
@@ -133,6 +130,13 @@
 - (void)greystripeBannerDidCollapse:(id<GSAd>)a_ad
 {
     self.statusLabel.text = @"Greystripe ad collapsed.";
+}
+
+#pragma mark - Banner Rotation Management -
+
+- (void) viewWillLayoutSubviews
+{
+    [self.myMediumRectangleAd setFrame:CGRectMake(([self.view bounds].size.width - kGSMediumRectangleWidth)/2, 20, kGSMediumRectangleWidth, kGSMediumRectangleHeight)];
 }
 
 #pragma mark - Memory Management -

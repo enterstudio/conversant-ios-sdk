@@ -8,32 +8,29 @@
 
 #import "iPhoneMobileBannerViewController.h"
 
+#import "GSAdDelegate.h"
 #import "GSMobileBannerAdView.h"
 #import "GSSDKInfo.h"
 
-@interface iPhoneMobileBannerViewController ()
+@interface iPhoneMobileBannerViewController () <GSAdDelegate>
+
+@property (nonatomic, strong) GSMobileBannerAdView *myBannerAd;
+@property (nonatomic, weak) IBOutlet UIButton *bannerButton;
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
 
 @end
 
 @implementation iPhoneMobileBannerViewController
 
-@synthesize bannerButton;
-@synthesize statusLabel;
-
 #pragma mark - UIViewController -
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    myBannerAd = [[GSMobileBannerAdView alloc] initWithDelegate:self];
-    
-    [myBannerAd setFrame:CGRectMake(0, 0, kGSMobileBannerWidth, kGSMobileBannerHeight)];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.myBannerAd = [[GSMobileBannerAdView alloc] initWithDelegate:self];
+    
+    [self.myBannerAd setFrame:CGRectMake(0, 20, kGSMobileBannerWidth, kGSMobileBannerHeight)];
 }
 
 #pragma mark - Greystripe UIViewController -
@@ -48,10 +45,10 @@
 - (IBAction)bannerButtonPressed:(id)sender
 {
     self.statusLabel.text = @"Fetching an ad...";
-    [bannerButton setEnabled:NO];
+    [self.bannerButton setEnabled:NO];
     
     // Fetch Banner Ad
-    [myBannerAd fetch];
+    [self.myBannerAd fetch];
 }
 
 #pragma mark - Greystripe Protocol Methods -
@@ -70,13 +67,13 @@
 
 - (void)greystripeAdFetchSucceeded:(id<GSAd>)a_ad
 {
-    if (a_ad == myBannerAd)
+    if (a_ad == self.myBannerAd)
     {
-        [self.view addSubview:myBannerAd];
+        [self.view addSubview:self.myBannerAd];
         
         self.statusLabel.text = @"Small banner successfully fetched.";
 
-        [bannerButton setEnabled:YES];
+        [self.bannerButton setEnabled:YES];
     }
     
     // Use the a_ad object to return the adID value for debugging purposes
@@ -118,7 +115,7 @@
             errorString = @"An invalid error code was returned. Thats really bad!";
     }
     self.statusLabel.text = [NSString stringWithFormat:@"Greystripe failed with error: %@",errorString];
-    [bannerButton setEnabled:YES];
+    [self.bannerButton setEnabled:YES];
 }
 
 - (void)greystripeAdClickedThrough:(id<GSAd>)a_ad
@@ -134,6 +131,13 @@
 - (void)greystripeBannerDidCollapse:(id<GSAd>)a_ad
 {
     self.statusLabel.text = @"Greystripe ad collapsed.";
+}
+
+#pragma mark - Banner Rotation Management -
+
+- (void) viewWillLayoutSubviews
+{
+    [self.myBannerAd setFrame:CGRectMake(([self.view bounds].size.width - kGSMobileBannerWidth)/2, 20, kGSMobileBannerWidth, kGSMobileBannerHeight)];
 }
 
 #pragma mark - Memory Management -

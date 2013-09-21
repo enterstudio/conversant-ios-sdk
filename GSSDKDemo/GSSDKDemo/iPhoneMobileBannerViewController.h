@@ -7,18 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GSAdDelegate.h"
 
-@class GSMobileBannerAdView;
-
-@interface iPhoneMobileBannerViewController : UIViewController <GSAdDelegate> {
-    GSMobileBannerAdView *myBannerAd;
-}
-
-@property (nonatomic, retain) IBOutlet UIButton *bannerButton;
-@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
-
-//Button actions
-- (IBAction)bannerButtonPressed:(id)sender;
+@interface iPhoneMobileBannerViewController : UIViewController
 
 @end

@@ -7,18 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GSAdDelegate.h"
 
-@class GSMediumRectangleAdView;
-
-@interface iPhoneMediumRectangleViewController : UIViewController <GSAdDelegate> {
-    GSMediumRectangleAdView *myMediumRectangleAd;
-}
-
-@property (nonatomic, retain) IBOutlet UIButton *mediumRectangleButton;
-@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
-
-//Button actions
-- (IBAction)mediumRectangleButtonPressed:(id)sender;
+@interface iPhoneMediumRectangleViewController : UIViewController
 
 @end

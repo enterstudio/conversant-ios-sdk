@@ -8,10 +8,16 @@
 
 #import "iPhoneFullscreenViewController.h"
 
+#import "GSAdDelegate.h"
 #import "GSFullscreenAd.h"
 #import "GSSDKInfo.h"
 
-@interface iPhoneFullscreenViewController ()
+@interface iPhoneFullscreenViewController () <GSAdDelegate>
+
+@property (nonatomic, strong) GSFullscreenAd *myFullscreenAd;
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak) IBOutlet UIButton *fetchFullscreenButton;
+@property (nonatomic, weak) IBOutlet UIButton *displayFullscreenButton;
 
 @end
 
