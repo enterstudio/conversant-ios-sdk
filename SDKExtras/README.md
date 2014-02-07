@@ -1,5 +1,5 @@
-Greystripe SDK Extras for iOS
-======================
+Conversant iOS SDK Extras
+=========================
 
 For Unity3D and other ARM apps, use the included libGreystripeSDK-nothumb.a no thumb build.
 
