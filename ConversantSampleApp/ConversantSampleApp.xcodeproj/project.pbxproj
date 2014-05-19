@@ -106,6 +106,7 @@
 				7F04215B192A7B2500E6A236 /* EventKit.framework in Frameworks */,
 				7F04215C192A7B2500E6A236 /* EventKitUI.framework in Frameworks */,
 				7F042117192A7A3300E6A236 /* Foundation.framework in Frameworks */,
+				7FF5DA82192A7E9700F60D96 /* libGreystripeSDK.a in Frameworks */,
 				7F04215E192A7B4A00E6A236 /* libsqlite3.dylib in Frameworks */,
 				7F042160192A7B5500E6A236 /* libz.dylib in Frameworks */,
 				7F042169192A7B7B00E6A236 /* MediaPlayer.framework in Frameworks */,
@@ -117,7 +118,6 @@
 				7F042191192A7CF800E6A236 /* StoreKit.framework in Frameworks */,
 				7F04216F192A7B7B00E6A236 /* SystemConfiguration.framework in Frameworks */,
 				7F042170192A7B7B00E6A236 /* Twitter.framework in Frameworks */,
-				7FF5DA82192A7E9700F60D96 /* libGreystripeSDK.a in Frameworks */,
 				7F04211B192A7A3300E6A236 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +360,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -392,6 +393,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -408,9 +410,11 @@
 				INFOPLIST_FILE = "ConversantSampleApp/ConversantSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../ConversantSDK\"",
+					../ConversantSDK,
+					"/Developer/GitHub/Conversant/conversant-ios-sdk/ConversantSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -426,9 +430,11 @@
 				INFOPLIST_FILE = "ConversantSampleApp/ConversantSampleApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"../ConversantSDK\"",
+					../ConversantSDK,
+					"/Developer/GitHub/Conversant/conversant-ios-sdk/ConversantSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
