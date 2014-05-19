@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>667BDF1A-575F-4B95-A8DA-679681408C71</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ConversantSampleApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DD166DC4-1ECA-4D5C-B616-DA649DEDDAA6</key>
+		<string>https://github.com/conversant/conversant-ios-sdk.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ConversantSampleApp/ConversantSampleApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DD166DC4-1ECA-4D5C-B616-DA649DEDDAA6</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/conversant/conversant-ios-sdk.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DD166DC4-1ECA-4D5C-B616-DA649DEDDAA6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD166DC4-1ECA-4D5C-B616-DA649DEDDAA6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>conversant-ios-sdk</string>
+		</dict>
+	</array>
+</dict>
+</plist>
