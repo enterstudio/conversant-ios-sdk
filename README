@@ -7,7 +7,7 @@ To learn more about the SDK, documentation and how to integrate it into your app
 
 TRY IT OUT
 
-1. Check out the Demo project, GSSDKDemo, to get started and to learn the basics of integrating
+1. Check out the sample project, ConversantSampleApp, to get started and to learn the basics of integrating
 
 2. Start coding! Visit our iOS SDK Support Guide (http://support.greystripe.com/ios) to learn more about integration options and SDK functionality
 
@@ -15,7 +15,7 @@ TRY IT OUT
 
 RELEASE NOTES
 
-For the latest, up-to-date information on iOS SDK features and bug fixes, visit our iOS SDK Release Notes (http://support.greystripe.com/ios/sdk)
+For the latest, up-to-date information on iOS SDK features and bug fixes, visit our iOS SDK Release Notes (https://github.com/conversant/conversant-ios-sdk/releases)
 
 LICENSE
 
