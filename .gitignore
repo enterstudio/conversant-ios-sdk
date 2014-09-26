@@ -15,5 +15,6 @@ profile
 DerivedData
 .idea/
 *.hmap
-*.ipa
-*.xcuserstate
+
+#CocoaPods
+Pods
