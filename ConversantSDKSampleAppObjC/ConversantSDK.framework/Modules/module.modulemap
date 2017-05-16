@@ -1,0 +1,10 @@
+framework module ConversantSDK {
+  umbrella header "ConversantSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module ConversantSDK.Swift {
+    header "ConversantSDK-Swift.h"
+}

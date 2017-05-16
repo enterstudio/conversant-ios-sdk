@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width; minimum-scale=1.0; maximum-scale=1.0; user-scalable=no">
+        </head>
+<body style="background-color:black;color:white">
+<div id ="ad" style="font-size:20px">Not initialized</div>
+<script>
+function mraidIsReady()
+{
+mraid.removeEventListener("ready", mraidIsReady);
+
+updateText("Initialized from mraid");
+}
+
+function updateText (newText) {
+    var el = document.getElementById("ad");
+    el.innerHTML = newText;
+}
+
+
+function doReadyCheck()
+{
+if (mraid.getState() == 'loading')
+{
+    updateText("set listener");
+    mraid.addEventListener("ready", mraidIsReady);
+}
+else
+{
+    updateText("No listener needed");
+}
+}
+
+doReadyCheck();
+</script>
+</body>
+</html>

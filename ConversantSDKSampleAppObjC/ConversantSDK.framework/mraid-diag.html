@@ -1,0 +1,636 @@
+<script src="mraid3.js"></script>
+<style>
+   body {
+      padding: 0;
+      margin: 0;
+      color: #ddd;
+      background-color: #000;
+      font-family: "Helvetica Neue", Helvetica, Verdana, sans-serif;
+      font-size: 16px;
+   }
+   
+   table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 1em auto;
+      border: 2px solid #fff;
+      height: 800px;
+   }
+   
+   table td,
+   table th {
+      border-right: 1px solid #ccc;
+      padding: .35em .5em .5em .5em;
+      vertical-align: top;
+   }
+   
+   .unsupported {
+      color: #777;
+   }
+   
+   thead {
+      background-color: #555;
+   }
+   
+   tr:nth-child(even) {
+      background-color: #333;
+   }
+   
+   tr.sectionRow {
+      border-top: 2px solid #aaa;
+   }
+   
+   .ok {
+      background-color: #009900;
+   }
+   
+   .ok+ {
+      background-color: #00bb00;
+      font-weight: bold;
+   }
+   
+   .unknown {
+      background-color: #ffff00;
+   }
+   
+   .error {
+      background-color: #990000;
+   }
+   
+   .unsupported {
+      background-color: #555;
+   }
+   /*.section { width:9%; }
+.item {width:18% }
+.test {width:18% }
+.expect {width:11%; }
+.result {width:9%; }
+.desc {width:55% }*/
+</style>
+<table id='container'>
+   <thead>
+      <tr>
+         <th class='section'>Section</th>
+         <th class='item'>Test Item</th>
+         <th class='test'>Test</th>
+         <th class='expect'>Expect</th>
+         <th class='result'>Result</th>
+         <th class='desc'>Description</th>
+      </tr>
+   </thead>
+</table>
+
+<script>
+   var mraiddef = {
+      "methods": [{
+         "name": "getVersion",
+         "type": "method",
+         "desc": "Ad checks the version of the MRAID implementation that the host is using.",
+         "supported": true,
+         "test": "getVersion",
+         "expect": "3.0",
+         "result": ""
+      }, {
+         "name": "addEventListener",
+         "type": "method",
+         "desc": "Ad registers a listener for a specified event",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "ready",
+            function(arg) {
+               updateResult('addEventListener', arg, 'Callback called');
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "removeEventListener",
+         "type": "method",
+         "desc": "Ad removes a listener for a specified event",
+         "supported": true,
+         "test": "removeEventListener",
+         "args": [
+            "ready"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "open",
+         "type": "method",
+         "desc": "Ad specifies a URL to be opened in a new webview",
+         "supported": true,
+         "test": "open",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "useCustomClose",
+         "type": "method",
+         "desc": "Ad specifies a custom graphic to use in place of the host-provided default close graphic",
+         "supported": true,
+         "test": "useCustomClose",
+         "args": [false],
+         "expect": false,
+         "result": ""
+      }, {
+         "name": "expand",
+         "type": "method",
+         "desc": "Ad requests ad container expansion",
+         "supported": true,
+         "test": "expand",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "isViewable*",
+         "type": "method",
+         "desc": "Ad queries the host about the on-screen result of the ad container",
+         "supported": true,
+         "test": "isViewable",
+         "expect": cnvr.state.isViewable,
+         "result": ""
+      }, {
+         "name": "playVideo",
+         "type": "method",
+         "desc": "Ad requests video play in native player",
+         "supported": true,
+         "test": "",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "resize",
+         "type": "method",
+         "desc": "Ad requests ad container size change to accommodate new ad size",
+         "supported": true,
+         "test": "",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "storePicture",
+         "type": "method",
+         "desc": "Ad requests prompt to user about storing a picture on the device",
+         "supported": false,
+         "test": "",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "createCalendarEvent",
+         "type": "method",
+         "desc": "Ad request prompt to the user for adding an event to the device calendar",
+         "supported": false,
+         "test": "",
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "close",
+         "type": "method",
+         "desc": "Ad calls to downgrade the state ad container",
+         "supported": true,
+         "test": "close",
+         "expect": true,
+         "result": ""
+      }],
+      "properties": [
+      {
+         "name": "supports [sms]",
+         "type": "property",
+         "desc": "Ad requests details on support for the 'sms:' protocol to send an SMS message",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "sms"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "supports [tel]",
+         "type": "property",
+         "desc": "Ad requests details on support for 'tel:' protocol to initiate a phone call",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "tel"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "supports [calendar]",
+         "type": "property",
+         "desc": "Ad requests details on support for creating a calendar entry",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "calendar"
+         ],
+         "expect": false,
+         "result": ""
+      }, {
+         "name": "supports [storePicture]",
+         "type": "property",
+         "desc": "Ad requests details on support for storing a picture on the users device",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "storePicture"
+         ],
+         "expect": false,
+         "result": ""
+      }, {
+         "name": "supports [inlineVideo]",
+         "type": "property",
+         "desc": "Ad requests details on features support for inline video playback",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "inlineVideo"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "supports [vpaid]",
+         "type": "property",
+         "desc": "Ad requests details on support for VPAID",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "vpaid"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "supports [location]",
+         "type": "property",
+         "desc": "Ad requests details on support for location services",
+         "supported": true,
+         "test": "supports",
+         "args": [
+            "location"
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "getPlacementType",
+         "type": "property",
+         "desc": "Ad requests confirmation of either an inline or interstitial placement",
+         "supported": true,
+         "test": "",
+         "expect": "inline",
+         "result": ""
+      }, {
+         "name": "setOrientationProperties",
+         "type": "property",
+         "desc": "Ad specifies preferences for allowing or locking orientation, if supported, for ad display",
+         "supported": true,
+         "test": "setOrientationProperties",
+         "expect": cnvr.state.getOrientationProperties,
+         "result": ""
+      }, {
+         "name": "getOrientationProperties",
+         "type": "property",
+         "desc": "Ad requests details on landscape or portrait orientation",
+         "supported": true,
+         "test": "getOrientationProperties",
+         "expect": cnvr.state.getOrientationProperties,
+         "result": ""
+      }, {
+         "name": "getCurrentAppOrientation",
+         "type": "property",
+         "desc": "Ad requests current orientation of the app",
+         "supported": true,
+         "test": "getCurrentAppOrientation",
+         "expect": cnvr.state.getCurrentAppOrientation,
+         "result": ""
+      }, {
+         "name": "getCurrentPosition",
+         "type": "property",
+         "desc": "Ad requests current coordinates of the ad container",
+         "supported": true,
+         "test": "getCurrentPosition",
+         "expect": cnvr.state.getCurrentPosition,
+         "result": ""
+      }, {
+         "name": "getDefaultPosition",
+         "type": "property",
+         "desc": "Ad requests default coordinates of the ad container",
+         "supported": true,
+         "test": "getDefaultPosition",
+         "expect": cnvr.state.getDefaultPosition,
+         "result": ""
+      }, {
+         "name": "getState",
+         "type": "property",
+         "desc": "Ad requests current state of the ad container: loading, default, expanded, resized, hidden",
+         "supported": true,
+         "test": "getState",
+         "expect": "ready",
+         "result": ""
+      }, {
+         "name": "setExpandProperties",
+         "type": "property",
+         "desc": "Ad specifies new expand properties",
+         "supported": true,
+         "test": "setExpandProperties",
+         "args": [{
+            "width": 640,
+            "height": 800,
+            "useCustomClose": false,
+            "isModal": false
+         }],
+         "expect": {
+            "width": 640,
+            "height": 800,
+            "useCustomClose": false,
+            "isModal": false
+         },
+         "result": ""
+      }, {
+         "name": "getExpandProperties",
+         "type": "property",
+         "desc": "Ad requests current expand properties",
+         "supported": true,
+         "test": "getExpandProperties",
+         "expect": {
+            "width": 640,
+            "height": 800,
+            "useCustomClose": false,
+            "isModal": false
+         },
+         "result": ""
+      }, {
+         "name": "getMaxSize",
+         "type": "property",
+         "desc": "Ad request max ad container dimensions available",
+         "supported": true,
+         "test": "",
+         "expect": {
+            "width": window.screen.width,
+            "height": window.screen.height
+         },
+         "result": ""
+      }, {
+         "name": "getScreenSize",
+         "type": "property",
+         "desc": "Ad requests dimensions of device screen",
+         "supported": true,
+         "test": "getScreenSize",
+         "expect": {
+            "width": window.screen.width,
+            "height": window.screen.height
+         },
+         "result": ""
+      }, {
+         "name": "setResizeProperties",
+         "type": "property",
+         "desc": "Ad specifies dimensions for resizing the ad container",
+         "supported": true,
+         "test": "setResizeProperties",
+         "args": [{
+            "width": window.screen.width,
+            "height": window.screen.height,
+            "offsetX": 0,
+            "offsetY": 0,
+            "customClosePosition": "top-right",
+            "allowOffscreen": false
+         }],
+         "expect": cnvr.state.getResizeProperties,
+         "result": ""
+      }, {
+         "name": "getResizeProperties",
+         "type": "property",
+         "desc": "Ad requests current dimensions of the ad container in its resized state",
+         "supported": true,
+         "test": "getResizeProperties",
+         "expect": cnvr.state.getResizeProperties,
+         "result": ""
+      }, {
+         "name": "getLocation",
+         "type": "property",
+         "desc": "Ad requests current coordinates of the device",
+         "supported": true,
+         "test": "getLocation",
+         "expect": true,
+         "result": ""
+      }],
+      "events": [{
+         "name": "error",
+         "type": "event",
+         "desc": "Host reports an error",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "error",
+            function(arg) {
+               updateResult('error', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "ready",
+         "type": "event",
+         "desc": "Host reports that MRAID libraries are loaded",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "ready",
+            function(arg) {
+               updateResult('ready', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "sizeChange",
+         "type": "event",
+         "desc": "Host reports that ad container dimensions have changed",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "sizeChange",
+            function(arg) {
+               updateResult('sizeChange', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "stateChange",
+         "type": "event",
+         "desc": "Host reports that the state of the ad container has changed",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "stateChange",
+            function(arg) {
+               updateResult('stateChange', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "exposureChange",
+         "type": "event",
+         "desc": "Host reports that the percentage of ad container exposure has changed",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "exposureChange",
+            function(arg) {
+               updateResult('exposureChange', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "audioVolumeChange",
+         "type": "event",
+         "desc": "Host reports a change in volume",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "audioVolumeChange",
+            function(arg) {
+               updateResult('audioVolumeChange', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "adAction",
+         "type": "event",
+         "desc": "Host reports a user-initiated action",
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "adAction",
+            function(arg) {
+               updateResult('adAction', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }, {
+         "name": "viewableChange",
+         "type": "event",
+         "desc": "Host reports a change in ad container viewability",
+         "deprecated": true,
+         "supported": true,
+         "test": "addEventListener",
+         "args": [
+            "viewableChange",
+            function(arg) {
+               updateResult('viewableChange', arg);
+            }
+         ],
+         "expect": true,
+         "result": ""
+      }]
+   }
+</script>
+<script>
+   function init() {
+      var el = document.getElementById('container'),
+         out, frag, tr;
+      for (var section in mraiddef) {
+         var secShow = section.toLowerCase().replace(/\b[a-z](?=[a-z]{2})/g, function(letter) {
+            return letter.toUpperCase();
+         });
+         out = "<tr class='sectionRow'><td class='section' rowspan='" + mraiddef[section].length + "'>" + secShow + "</td>";
+         tr = "";
+         for (var item in mraiddef[section]) {
+            var test = mraiddef[section][item];
+
+            if (item > 0) {
+               if (test.supported == false) {
+                  out += "<tr class='unsupported'>";
+               } else {
+                  out += "<tr>";
+               }
+            }
+
+            test.test = test.test ? test.test : test.name; // Use test name as test if no test defined
+
+            var testString = test.test;
+            var result = test.result ? test.result : "?";
+            var expect = test.expect;
+            console.dir(test);
+            if (typeof expect !== "function") {
+               expect = JSON.stringify(expect).replace(/,/g, ",<br>\n   ");
+            } else {
+               expect = expect.toString();
+            }
+
+            out += "<td class='item'>" + mraiddef[section][item].name + "</td><td class='test'>" + testString + "</td><td class='expect'>" + expect + "</td><td id='result_" + mraiddef[section][item].name + "' class='result unknown'>" + result + "</td><td class='desc'>" + mraiddef[section][item].desc + "</td></tr>\n";
+         }
+         frag = document.createElement("tbody");
+         frag.innerHTML = out;
+         el.appendChild(frag);
+         out = "";
+      }
+      /*
+      if ("geolocation" in navigator) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+            cnvr.state.getLocation = position.coords;
+            updateResult("getLocation", position.coords);
+         });
+      }
+      */
+      runTests();
+   }
+
+   function runTests() {
+      var sections = ['methods', 'properties', 'events'];
+      var wait = 1;
+      for (var section in sections) {
+         var tests = mraiddef[sections[section]];
+
+         for (var test in tests) {
+            scheduleTest(tests[test], wait);
+            ++wait;
+         }
+      }
+   }
+
+   function scheduleTest(test, wait) {
+      setTimeout(function() {
+         runTest(test);
+      }, wait * 500);
+   }
+
+   function runTest(test) {
+      var el = document.getElementById('result_' + test.name);
+      var result = "";
+      if (test.supported) {
+         if (test.args) {
+            result = mraid[test.test](test.args[0], test.args[1]);
+         } else {
+            result = mraid[test.test]();
+         }
+         if ((result == test.expect) || (JSON.stringify(result) == JSON.stringify(test.expect))) {
+            el.classList.toggle("ok");
+            el.classList.remove("unknown");
+         } else {
+            el.classList.remove("ok");
+            el.classList.add("error");
+         }
+      } else {
+         result = "UNSUPPORTED";
+         el.classList.remove("unknown");
+      }
+
+      if (result) {
+         result = JSON.stringify(result);
+         result = result.replace(/,/g, ",<br>\n");
+      }
+
+      el.innerHTML = result;
+   }
+
+   function updateResult(who, what) {
+      what = what ? what : "ok";
+      var el = document.getElementById('result_' + who);
+      el.classList.add("ok+");
+      el.classList.remove("unknown");
+      el.innerHTML = what;
+   }
+   init();
+</script>

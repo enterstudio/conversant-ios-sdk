@@ -1,15 +1,15 @@
 Conversant iOS SDK
 ==================
 
-The Conversant iOS SDK (formerly Greystripe iOS SDK) provides a simple way to monetize your game or application via fullscreen interstitial and banner ads in your iOS app.
+The Conversant iOS SDK provides a simple way to monetize your game or application via fullscreen interstitial and banner ads in your iOS app.
 
-To learn more about the SDK, documentation and how to integrate it into your app, please visit our Support site [http://support.greystripe.com](http://support.greystripe.com)
+To learn more about the SDK, documentation and how to integrate it into your app, please visit our Support site [http://publishersupport.conversantmedia.com/](http://publishersupport.conversantmedia.com/)
 
 TRY IT OUT
 
-1. Check out the sample project, ConversantSampleApp, to get started and to learn the basics of integrating
+1. Check out the sample projects to get started and to learn the basics of integrating
 
-2. Start coding! Visit our iOS SDK Support Guide [http://support.greystripe.com/ios](http://support.greystripe.com/ios) to learn more about integration options and SDK functionality
+2. Start coding! Visit our iOS SDK Support Guide [http://publishersupport.conversantmedia.com/](http://publishersupport.conversantmedia.com/) to learn more about integration options and SDK functionality
 
 3. Sign-up for a Publisher Account [https://admin.valueclickmedia.com/corp/signup](https://admin.valueclickmedia.com/corp/signup) or login [https://admin.valueclickmedia.com/corp/login](https://admin.valueclickmedia.com/corp/login), create your unique App Id, get approved, and go live
 
